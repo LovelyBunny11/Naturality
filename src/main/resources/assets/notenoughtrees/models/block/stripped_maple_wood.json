@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "notenoughtrees:block/stripped_maple_log",
+    "side": "notenoughtrees:block/stripped_maple_log"
+  }
+}

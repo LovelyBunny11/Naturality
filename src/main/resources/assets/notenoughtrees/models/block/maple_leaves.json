@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "notenoughtrees:block/maple_leaves"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "notenoughtrees:block/beech_sapling"
+  }
+}

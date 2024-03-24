@@ -15,10 +15,10 @@ import net.minecraft.world.level.block.DispenserBlock;
 public class NETBoatDispenseItemBehaviour extends DefaultDispenseItemBehavior
 {
     private final DefaultDispenseItemBehavior defaultDispenseItemBehavior = new DefaultDispenseItemBehavior();
-    private final NETBoat.ModelType type;
+    private final NETBoat.Type type;
     private final boolean hasChest;
 
-    public NETBoatDispenseItemBehaviour(boolean hasChest, NETBoat.ModelType type)
+    public NETBoatDispenseItemBehaviour(boolean hasChest, NETBoat.Type type)
     {
         this.type = type;
         this.hasChest = hasChest;
@@ -53,13 +53,13 @@ public class NETBoatDispenseItemBehaviour extends DefaultDispenseItemBehavior
         if (this.hasChest)
         {
             boat = new NETChestBoat(level, d0, d1 + d3, d2);
-            ((NETChestBoat)boat).setModel(this.type);
+            ((NETChestBoat)boat).setType(this.type);
 
         }
         else
         {
             boat = new NETBoat(level, d0, d1 + d3, d2);
-            ((NETBoat)boat).setModel(this.type);
+            ((NETBoat)boat).setType(this.type);
         }
 
         boat.setYRot(direction.toYRot());

@@ -13,12 +13,15 @@ public class NETEntities {
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, NET.MODID);
 
 
-    public static final RegistryObject<EntityType<NETBoat>> NET_BOAT =
-            ENTITY_TYPES.register("mod_boat", () -> EntityType.Builder.<NETBoat>of(NETBoat::new, MobCategory.MISC)
-                    .sized(1.375f, 0.5625f).build("mod_boat"));
-    public static final RegistryObject<EntityType<NETChestBoat>> NET_CHEST_BOAT =
-            ENTITY_TYPES.register("mod_chest_boat", () -> EntityType.Builder.<NETChestBoat>of(NETChestBoat::new, MobCategory.MISC)
-                    .sized(1.375f, 0.5625f).build("mod_chest_boat"));
+    public static final RegistryObject<EntityType<NETBoat>> BOAT =
+            ENTITY_TYPES.register("boat", () -> EntityType.Builder.<NETBoat>of(NETBoat::new, MobCategory.MISC)
+                    .sized(1.375f, 0.5625f).build("boat"));
+    public static final RegistryObject<EntityType<NETChestBoat>> CHEST_BOAT =
+            ENTITY_TYPES.register("chest_boat", () -> EntityType.Builder.<NETChestBoat>of(NETChestBoat::new, MobCategory.MISC)
+                    .sized(1.375f, 0.5625f).build("chest_boat"));
+    public static final RegistryObject<EntityType<RosyMapleMoth>> ROSY_MAPLE_MOTH =
+            ENTITY_TYPES.register("rosy_maple_moth", () -> EntityType.Builder.<RosyMapleMoth>of(RosyMapleMoth::new, MobCategory.MISC)
+                    .sized(1.375f, 0.5625f).build("rosy_maple_moth"));
 
 
 

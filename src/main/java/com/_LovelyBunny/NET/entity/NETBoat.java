@@ -9,6 +9,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.Item;
@@ -29,7 +30,7 @@ public class NETBoat extends Boat {
 
     public NETBoat(Level level, double x, double y, double z)
     {
-        this((EntityType<NETBoat>)NETEntities.NET_BOAT.get(), level);
+        this((EntityType<NETBoat>)NETEntities.BOAT.get(), level);
         this.setPos(x, y, z);
         this.xo = x;
         this.yo = y;
@@ -43,17 +44,13 @@ public class NETBoat extends Boat {
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag nbt)
-    {
-        nbt.putString("model", getModel().getName());
+    protected void addAdditionalSaveData(CompoundTag nbt) {
+        nbt.putString("Type", this.getNETVariant().getSerializedName());
     }
 
-    @Override
-    protected void readAdditionalSaveData(CompoundTag nbt)
-    {
-        if (nbt.contains("model", Tag.TAG_STRING))
-        {
-            this.entityData.set(DATA_ID_TYPE, ModelType.byName(nbt.getString("model")).ordinal());
+    protected void readAdditionalSaveData(CompoundTag nbt) {
+        if (nbt.contains("Type", 8)) {
+            this.setNETVariant(NETBoat.Type.byName(nbt.getString("Type")));
         }
     }
 
@@ -81,7 +78,7 @@ public class NETBoat extends Boat {
                         {
                             for (int i = 0; i < 3; ++i)
                             {
-                                this.spawnAtLocation(this.getModel().getPlanks());
+                                this.spawnAtLocation(this.getNETType().getPlanks());
                             }
 
                             for (int j = 0; j < 2; ++j)
@@ -104,43 +101,48 @@ public class NETBoat extends Boat {
     @Override
     public Item getDropItem()
     {
-        switch (ModelType.byId(this.entityData.get(DATA_ID_TYPE)))
+        switch (Type.byId(this.entityData.get(DATA_ID_TYPE)))
         {
             case MAPLE:
                 return NETItems.MAPLE_BOAT.get();
+            case LINDEN:
+                return NETItems.LINDEN_BOAT.get();
+            case DRACAENA:
+                return NETItems.DRACAENA_BOAT.get();
+            case BEECH:
+                return NETItems.BEECH_BOAT.get();
         }
         return Items.OAK_BOAT;
     }
 
-    public void setModel(ModelType type)
+    public void setType(Type type)
     {
         this.entityData.set(DATA_ID_TYPE, type.ordinal());
     }
 
-    public ModelType getModel()
+    public NETBoat.Type getNETType()
     {
-        return ModelType.byId(this.entityData.get(DATA_ID_TYPE));
+        return NETBoat.Type.byId(this.entityData.get(DATA_ID_TYPE));
     }
 
-    @Deprecated
-    @Override
-    public void setVariant(Type vanillaType) {}
-
-    @Deprecated
-    @Override
-    public Type getVariant()
-    {
-        return Type.OAK;
+    public void setNETVariant(Type p_38333_) {
+        this.entityData.set(DATA_ID_TYPE, p_38333_.ordinal());
     }
 
-    public enum ModelType
-    {
-        MAPLE("maple", NETBlocks.MAPLE_PLANKS.get());
+    public Type getNETVariant() {
+        return Type.byId((Integer)this.entityData.get(DATA_ID_TYPE));
+    }
+
+    public enum Type {
+        MAPLE("maple", NETBlocks.MAPLE_PLANKS.get()),
+        LINDEN("linden", NETBlocks.LINDEN_PLANKS.get()),
+        DRACAENA("dracaena", NETBlocks.DRACAENA_PLANKS.get()),
+        BEECH("beech", NETBlocks.BEECH_PLANKS.get());
 
         private final String name;
         private final Block planks;
 
-        ModelType(String name, Block planks)
+        Type(String name, Block planks)
         {
             this.name = name;
             this.planks = planks;
@@ -150,7 +152,9 @@ public class NETBoat extends Boat {
         {
             return this.name;
         }
-
+        public String getSerializedName() {
+            return this.name;
+        }
         public Block getPlanks()
         {
             return this.planks;
@@ -160,15 +164,15 @@ public class NETBoat extends Boat {
             return this.name;
         }
 
-        public static ModelType byId(int id)
+        public static Type byId(int id)
         {
-            ModelType[] type = values();
+            Type[] type = values();
             return type[id < 0 || id >= type.length ? 0 : id];
         }
 
-        public static ModelType byName(String aName)
+        public static Type byName(String aName)
         {
-            ModelType[] type = values();
+            Type[] type = values();
             return Arrays.stream(type).filter(t -> t.getName().equals(aName)).findFirst().orElse(type[0]);
         }
     }

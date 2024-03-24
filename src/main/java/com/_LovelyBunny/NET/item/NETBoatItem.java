@@ -25,10 +25,10 @@ import java.util.function.Predicate;
 public class NETBoatItem extends Item
 {
     private static final Predicate<Entity> ENTITY_PREDICATE = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
-    private final NETBoat.ModelType type;
+    private final NETBoat.Type type;
     private final boolean hasChest;
 
-    public NETBoatItem(boolean hasChest, NETBoat.ModelType type, Item.Properties properties)
+    public NETBoatItem(boolean hasChest, NETBoat.Type type, Item.Properties properties)
     {
         super(properties);
         this.type = type;
@@ -71,12 +71,12 @@ public class NETBoatItem extends Item
                 if (this.hasChest)
                 {
                     boat = new NETChestBoat(level, hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z);
-                    ((NETChestBoat)boat).setModel(this.type);
+                    ((NETChestBoat)boat).setType(this.type);
                 }
                 else
                 {
                     boat = new NETBoat(level, hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z);
-                    ((NETBoat)boat).setModel(this.type);
+                    ((NETBoat)boat).setType(this.type);
                 }
 
                 boat.setYRot(player.getYRot());

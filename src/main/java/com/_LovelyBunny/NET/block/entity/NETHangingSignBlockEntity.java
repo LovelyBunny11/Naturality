@@ -6,13 +6,15 @@ import net.minecraft.world.level.block.entity.HangingSignBlockEntity;
 import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class NETHangingSignBlockEntity extends SignBlockEntity {
+public class NETHangingSignBlockEntity extends HangingSignBlockEntity {
+
+
     public NETHangingSignBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(NETBlockEntities.NET_HANGING_SIGN.get(), pPos, pBlockState);
+        super(pPos, pBlockState);
     }
 
     @Override
     public BlockEntityType<?> getType() {
-        return NETBlockEntities.NET_HANGING_SIGN.get();
+        return NETBlockEntities.HANGING_SIGN.get();
     }
 }

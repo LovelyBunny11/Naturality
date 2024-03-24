@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "notenoughtrees:dracaena",
+    "features": [
+      {
+        "chance": 0.01,
+        "feature": "minecraft:acacia"
+      },
+      {
+        "chance": 0.1,
+        "feature": "notenoughtrees:dracaena"
+      }
+    ]
+  }
+}

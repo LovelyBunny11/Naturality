@@ -27,22 +27,17 @@ public class ColorHandler
         event.getItemColors().register((stack, tintIndex) -> {
                     BlockState state = ((BlockItem)stack.getItem()).getBlock().defaultBlockState();
                     return event.getBlockColors().getColor(state, null, null, tintIndex); },
-                NETBlocks.MAPLE_LEAVES.get(), NETBlocks.MAPLE_LEAVES.get());
+                NETBlocks.MAPLE_LEAVES.get(), NETBlocks.LINDEN_LEAVES.get(), NETBlocks.LINDEN_LEAVES.get());
     }
 
     @SubscribeEvent
     public static void registerBlockColors(RegisterColorHandlersEvent.Block event)
     {
-
         event.getBlockColors().register((state, world, pos, tintIndex) ->
                         world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColor.getDefaultColor(),
-                NETBlocks.MAPLE_LEAVES.get(), NETBlocks.MAPLE_LEAVES.get());
-    }
-
-    public static int getRainbowBirchColor(BlockAndTintGetter world, BlockPos pos)
-    {
-        Color foliage = Color.getHSBColor((((float)pos.getX() + Mth.sin(((float)pos.getZ() + (float)pos.getX()) / 35) * 35) % 150) / 150, 0.6F, 1.0F);
-
-        return foliage.getRGB();
+                NETBlocks.MAPLE_LEAVES.get(), NETBlocks.LINDEN_LEAVES.get(), NETBlocks.LINDEN_LEAVES.get());
+            event.getBlockColors().register((state, world, pos, tintIndex) ->
+    world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : GrassColor.getDefaultColor(),
+        NETBlocks.CLOVER.get(), NETBlocks.RARE_CLOVER.get());
     }
 }

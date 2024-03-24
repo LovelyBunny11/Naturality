@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "notenoughtrees:block/beech_slab"
+    },
+    "type=double": {
+      "model": "notenoughtrees:block/beech_planks"
+    },
+    "type=top": {
+      "model": "notenoughtrees:block/beech_slab_top"
+    }
+  }
+}

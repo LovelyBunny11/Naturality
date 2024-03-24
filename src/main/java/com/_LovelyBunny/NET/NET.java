@@ -4,27 +4,18 @@ import com._LovelyBunny.NET.block.NETBlocks;
 import com._LovelyBunny.NET.block.entity.NETBlockEntities;
 import com._LovelyBunny.NET.block.entity.NETWoodTypes;
 import com._LovelyBunny.NET.entity.NETEntities;
-import com._LovelyBunny.NET.item.NETCreativeModTabs;
+import com._LovelyBunny.NET.item.NETCreativeTabs;
 import com._LovelyBunny.NET.item.NETItems;
-import com._LovelyBunny.NET.worldgen.NETTrunkPlacerTypes;
+import com._LovelyBunny.NET.worldgen.biome.NETOverworldRegion;
+import com._LovelyBunny.NET.worldgen.biome.NETSurfaceRuleData;
+import com._LovelyBunny.NET.worldgen.tree.NETTrunkPlacers;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -32,10 +23,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+import terrablender.api.Regions;
+import terrablender.api.SurfaceRuleManager;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(NET.MODID)
@@ -47,23 +37,18 @@ public class NET
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public NET()
-    {
+    { 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
-        NETCreativeModTabs.register(modEventBus);
-
+        NETCreativeTabs.register(modEventBus);
         NETItems.register(modEventBus);
-
         NETBlocks.register(modEventBus);
-
         NETBlockEntities.register(modEventBus);
-
         NETEntities.register(modEventBus);
-
-        NETTrunkPlacerTypes.register(modEventBus);
+        NETTrunkPlacers.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -87,9 +72,28 @@ public class NET
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             Sheets.addWoodType(NETWoodTypes.MAPLE);
-            ItemBlockRenderTypes.setRenderLayer(NETBlocks.MAPLE_DOOR.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(NETBlocks.MAPLE_TRAPDOOR.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(NETBlocks.MAPLE_SAPLING.get(), RenderType.translucent());
+            Sheets.addWoodType(NETWoodTypes.LINDEN);
+            Sheets.addWoodType(NETWoodTypes.DRACAENA);
+            Sheets.addWoodType(NETWoodTypes.BEECH);
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.DRACAENA_BRANCHES.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.MAPLE_DOOR.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.LINDEN_DOOR.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.DRACAENA_DOOR.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.MAPLE_TRAPDOOR.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.LINDEN_TRAPDOOR.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.DRACAENA_TRAPDOOR.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.MAPLE_SAPLING.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.LINDEN_SAPLING.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.DRACAENA_SAPLING.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.BEECH_SAPLING.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.CLOVER.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.RARE_CLOVER.get(), RenderType.cutoutMipped());
+
+            event.enqueueWork(() -> {
+                Regions.register(new NETOverworldRegion(new ResourceLocation(MODID, "overworld"), 4));
+
+                SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, NETSurfaceRuleData.makeRules());
+            });
         }
     }
 }

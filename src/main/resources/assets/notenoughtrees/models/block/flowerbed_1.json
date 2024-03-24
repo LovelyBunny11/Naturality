@@ -1,0 +1,35 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "#flowerbed"
+	},
+	"elements": [
+		{
+			"from": [0, 2.99, 0],
+			"to": [8, 2.99, 8],
+			"faces": {
+				"up": {"uv": [0, 0, 8, 8], "texture": "#flowerbed", "tintindex": 1},
+				"down": {"uv": [0, 8, 8, 0], "texture": "#flowerbed", "tintindex": 1}
+			}
+		},
+		{
+			"from": [6.35, 0, -0.55],
+			"to": [6.35, 2.99, 0.45],
+			"rotation": {"angle": -45, "axis": "y", "origin": [0, 0, 0]},
+			"faces": {
+				"east": {"uv": [0, 4, 1, 7], "texture": "#stem", "tintindex": 1},
+				"west": {"uv": [0, 4, 1, 7], "texture": "#stem", "tintindex": 1}
+			}
+		},
+		{
+			"from": [5.85, 0, -0.05],
+			"to": [6.85, 2.99, -0.05],
+			"rotation": {"angle": -45, "axis": "y", "origin": [0, 0, 0]},
+			"faces": {
+				"north": {"uv": [0, 4, 1, 7], "texture": "#stem", "tintindex": 1},
+				"south": {"uv": [0, 4, 1, 7], "texture": "#stem", "tintindex": 1}
+			}
+		}
+	]
+}

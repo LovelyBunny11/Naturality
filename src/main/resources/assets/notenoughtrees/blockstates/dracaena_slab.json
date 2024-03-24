@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "notenoughtrees:block/dracaena_slab"
+    },
+    "type=double": {
+      "model": "notenoughtrees:block/dracaena_planks"
+    },
+    "type=top": {
+      "model": "notenoughtrees:block/dracaena_slab_top"
+    }
+  }
+}

@@ -113,6 +113,8 @@ public class NETChestBoat extends ChestBoat {
                     return NETItems.DRACAENA_CHEST_BOAT.get();
                 case BEECH:
                     return NETItems.BEECH_CHEST_BOAT.get();
+                case LARCH:
+                    return NETItems.LARCH_CHEST_BOAT.get();
             }
             return Items.OAK_CHEST_BOAT;
         }

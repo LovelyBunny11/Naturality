@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "notenoughtrees:block/larch_planks"
+  }
+}

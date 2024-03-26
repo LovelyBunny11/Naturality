@@ -171,6 +171,45 @@ public class NETItems {
             () -> new NETBoatItem(false, NETBoat.Type.BEECH,new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> BEECH_CHEST_BOAT = ITEMS.register("beech_chest_boat",
             () -> new NETBoatItem(true, NETBoat.Type.BEECH,new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> LARCH_LOG = ITEMS.register("larch_log",
+            () -> new BlockItem(NETBlocks.LARCH_LOG.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_WOOD = ITEMS.register("larch_wood",
+            () -> new BlockItem(NETBlocks.LARCH_WOOD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STRIPPED_LARCH_LOG = ITEMS.register("stripped_larch_log",
+            () -> new BlockItem(NETBlocks.STRIPPED_LARCH_LOG.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STRIPPED_LARCH_WOOD = ITEMS.register("stripped_larch_wood",
+            () -> new BlockItem(NETBlocks.STRIPPED_LARCH_WOOD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_PLANKS = ITEMS.register("larch_planks",
+            () -> new BlockItem(NETBlocks.LARCH_PLANKS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_STAIRS = ITEMS.register("larch_stairs",
+            () -> new BlockItem(NETBlocks.LARCH_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_SLAB = ITEMS.register("larch_slab",
+            () -> new BlockItem(NETBlocks.LARCH_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_FENCE = ITEMS.register("larch_fence",
+            () -> new BlockItem(NETBlocks.LARCH_FENCE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_FENCE_GATE = ITEMS.register("larch_fence_gate",
+            () -> new BlockItem(NETBlocks.LARCH_FENCE_GATE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_DOOR = ITEMS.register("larch_door",
+            () -> new BlockItem(NETBlocks.LARCH_DOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_TRAPDOOR = ITEMS.register("larch_trapdoor",
+            () -> new BlockItem(NETBlocks.LARCH_TRAPDOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_PRESSURE_PLATE = ITEMS.register("larch_pressure_plate",
+            () -> new BlockItem(NETBlocks.LARCH_PRESSURE_PLATE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_BUTTON = ITEMS.register("larch_button",
+            () -> new BlockItem(NETBlocks.LARCH_BUTTON.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_LEAVES = ITEMS.register("larch_leaves",
+            () -> new BlockItem(NETBlocks.LARCH_LEAVES.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_SAPLING = ITEMS.register("larch_sapling",
+            () -> new BlockItem(NETBlocks.LARCH_SAPLING.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LARCH_SIGN = ITEMS.register("larch_sign",
+            () -> new SignItem(new Item.Properties().stacksTo(16), NETBlocks.LARCH_SIGN.get(), NETBlocks.LARCH_WALL_SIGN.get()));
+    public static final RegistryObject<Item> LARCH_HANGING_SIGN = ITEMS.register("larch_hanging_sign",
+            () -> new HangingSignItem(NETBlocks.LARCH_HANGING_SIGN.get(), NETBlocks.LARCH_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> LARCH_BOAT = ITEMS.register("larch_boat",
+            () -> new NETBoatItem(false, NETBoat.Type.LARCH,new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> LARCH_CHEST_BOAT = ITEMS.register("larch_chest_boat",
+            () -> new NETBoatItem(true, NETBoat.Type.LARCH,new Item.Properties().stacksTo(1)));
 public static final RegistryObject<Item> CLOVER = ITEMS.register("clover",
         () -> new BlockItem(NETBlocks.CLOVER.get(),new Item.Properties()));
     public static final RegistryObject<Item> FOUR_LEAF_CLOVER = ITEMS.register("four_leaf_clover",

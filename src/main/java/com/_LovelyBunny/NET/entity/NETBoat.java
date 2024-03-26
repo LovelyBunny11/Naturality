@@ -111,6 +111,8 @@ public class NETBoat extends Boat {
                 return NETItems.DRACAENA_BOAT.get();
             case BEECH:
                 return NETItems.BEECH_BOAT.get();
+            case LARCH:
+                return NETItems.LARCH_BOAT.get();
         }
         return Items.OAK_BOAT;
     }
@@ -137,7 +139,8 @@ public class NETBoat extends Boat {
         MAPLE("maple", NETBlocks.MAPLE_PLANKS.get()),
         LINDEN("linden", NETBlocks.LINDEN_PLANKS.get()),
         DRACAENA("dracaena", NETBlocks.DRACAENA_PLANKS.get()),
-        BEECH("beech", NETBlocks.BEECH_PLANKS.get());
+        BEECH("beech", NETBlocks.BEECH_PLANKS.get()),
+        LARCH("beech", NETBlocks.LARCH_PLANKS.get());
 
         private final String name;
         private final Block planks;

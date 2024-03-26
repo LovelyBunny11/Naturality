@@ -6,7 +6,7 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.6,
+  "downfall": 0.2,
   "effects": {
     "fog_color": 12638463,
     "mood_sound": {
@@ -24,7 +24,8 @@
     "sky_color": 7972607,
     "water_color": 4159204,
     "water_fog_color": 329011,
-    "foliage_color": 7060032
+    "grass_color": 6516293,
+    "foliage_color": 6516293
   },
   "features": [
     [],
@@ -194,5 +195,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.8
+  "temperature": 1.3
 }

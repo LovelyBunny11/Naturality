@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "notenoughtrees:beech",
+    "features": [
+      {
+        "chance": 0.1,
+        "feature": "notenoughtrees:maple"
+      },
+      {
+        "chance": 0.6,
+        "feature": "notenoughtrees:linden"
+      },
+      {
+        "chance": 0.33333334,
+        "feature": "notenoughtrees:larch"
+      },
+      {
+        "chance": 1,
+        "feature": "notenoughtrees:deciduous_bush"
+      }
+    ]
+  }
+}

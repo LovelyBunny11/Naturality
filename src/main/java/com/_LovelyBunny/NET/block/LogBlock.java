@@ -44,16 +44,26 @@ public class LogBlock extends RotatedPillarBlock{
             if(state.is(NETBlocks.DRACAENA_LOG.get())) {
                 return NETBlocks.STRIPPED_DRACAENA_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
-
+            if(state.is(NETBlocks.BEECH_LOG.get())) {
+                return NETBlocks.STRIPPED_BEECH_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(NETBlocks.LARCH_LOG.get())) {
+                return NETBlocks.STRIPPED_LARCH_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
             if(state.is(NETBlocks.MAPLE_WOOD.get())) {
                 return NETBlocks.STRIPPED_MAPLE_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
-
             if(state.is(NETBlocks.LINDEN_WOOD.get())) {
                 return NETBlocks.STRIPPED_LINDEN_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
             if(state.is(NETBlocks.DRACAENA_WOOD.get())) {
                 return NETBlocks.STRIPPED_DRACAENA_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(NETBlocks.BEECH_WOOD.get())) {
+                return NETBlocks.STRIPPED_BEECH_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(NETBlocks.LARCH_WOOD.get())) {
+                return NETBlocks.STRIPPED_LARCH_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
         }
 

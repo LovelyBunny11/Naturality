@@ -15,6 +15,7 @@ public class NETConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DRACAENA = registerKey("dracaena");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BEECH = registerKey("beech");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LARCH = registerKey("larch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DECIDUOUS_BUSH = registerKey("deciduous_bush");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FLOWER_MAPLE = registerKey("flower_maple");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_MAPLE_FOREST = registerKey("trees_maple_forest");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_DECIDUOUS = registerKey("trees_deciduous");

@@ -75,6 +75,7 @@ public class NET
             Sheets.addWoodType(NETWoodTypes.LINDEN);
             Sheets.addWoodType(NETWoodTypes.DRACAENA);
             Sheets.addWoodType(NETWoodTypes.BEECH);
+            Sheets.addWoodType(NETWoodTypes.LARCH);
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.DRACAENA_BRANCHES.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.MAPLE_DOOR.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.LINDEN_DOOR.get(), RenderType.cutoutMipped());
@@ -86,6 +87,7 @@ public class NET
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.LINDEN_SAPLING.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.DRACAENA_SAPLING.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.BEECH_SAPLING.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.LARCH_SAPLING.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.CLOVER.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.RARE_CLOVER.get(), RenderType.cutoutMipped());
 

@@ -1,27 +1,23 @@
 package com._LovelyBunny.NET.worldgen.tree;
 
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
@@ -88,16 +84,18 @@ public class DracaenaTrunkPlacer extends TrunkPlacer {
 
         BlockPos.MutableBlockPos $$16 = new BlockPos.MutableBlockPos();
         Direction $$17 = Direction.Plane.HORIZONTAL.getRandomDirection(p_272993_);
+        Direction.Axis $$25 = Direction.Axis.X;
+        Direction.Axis $$26 = Direction.Axis.Z;
         Function<BlockState, BlockState> $$18 = (p_273382_) -> {
             return (BlockState)p_273382_.trySetValue(RotatedPillarBlock.AXIS, $$17.getAxis());
         };
-        $$15.add(this.generateBranch(p_272827_, p_272650_, p_272993_, p_272990_, p_273471_, p_273355_, $$18, $$17, $$6, $$6 < $$13 - 1, $$16));
+        $$15.add(this.generateBranch(p_272827_, p_272650_, p_272993_, p_272990_, p_273471_, p_273355_, $$18, $$17, $$6, $$6 < $$13 - 1, $$16.relative(Direction.NORTH).mutable()));
         if ($$10) {
-            $$15.add(this.generateBranch(p_272827_, p_272650_, p_272993_, p_272990_, p_273471_, p_273355_, $$18, $$17.getClockWise(), $$7, $$7 < $$13 - 1, $$16));
+            $$15.add(this.generateBranch(p_272827_, p_272650_, p_272993_, p_272990_, p_273471_, p_273355_, $$18, $$17.getClockWise(), $$7, $$7 < $$13 - 1, $$16.relative(Direction.WEST).mutable()));
             if ($$23) {
-                $$15.add(this.generateBranch(p_272827_, p_272650_, p_272993_, p_272990_, p_273471_, p_273355_, $$18, $$17.getOpposite(), $$21, $$21 < $$13 - 1, $$16));
+                $$15.add(this.generateBranch(p_272827_, p_272650_, p_272993_, p_272990_, p_273471_, p_273355_, $$18, $$17.getOpposite(), $$21, $$21 < $$13 - 1, $$16.relative(Direction.SOUTH).mutable()));
                 if ($$24) {
-                    $$15.add(this.generateBranch(p_272827_, p_272650_, p_272993_, p_272990_, p_273471_, p_273355_, $$18, $$17.getCounterClockWise(), $$22, $$22 < $$13 - 1, $$16));
+                    $$15.add(this.generateBranch(p_272827_, p_272650_, p_272993_, p_272990_, p_273471_, p_273355_, $$18, $$17.getCounterClockWise(), $$22, $$22 < $$13 - 1, $$16.relative(Direction.EAST).mutable()));
                 }
             }
         }

@@ -21,9 +21,9 @@ public class NETOverworldRegion extends Region {
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
         this.addModifiedVanillaOverworldBiomes(mapper, modifiedVanillaOverworldBuilder -> {
             modifiedVanillaOverworldBuilder.replaceBiome(Biomes.FOREST, NETBiomes.MAPLE_FOREST);
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.CHERRY_GROVE, NETBiomes.DECIDUOUS_WOODLAND);
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.GROVE, NETBiomes.AUTUMNAL_DECIDUOUS_WOODLAND);
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.DESERT, NETBiomes.LUSH_DESERT);
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.FLOWER_FOREST, NETBiomes.DECIDUOUS_WOODLAND);
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.PLAINS, NETBiomes.AUTUMNAL_DECIDUOUS_WOODLAND);
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.SPARSE_JUNGLE, NETBiomes.LUSH_DESERT);
         });
     }
 }

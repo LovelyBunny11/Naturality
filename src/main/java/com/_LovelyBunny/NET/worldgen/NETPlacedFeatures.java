@@ -21,9 +21,11 @@ public class NETPlacedFeatures {
     public static final ResourceKey<PlacedFeature> LINDEN = registerKey("linden");
     public static final ResourceKey<PlacedFeature> DRACAENA = registerKey("dracaena");
     public static final ResourceKey<PlacedFeature> BEECH = registerKey("beech");
-    public static final ResourceKey<PlacedFeature> FLOWER_MAPLE = registerKey("flower_maple.json");
+    public static final ResourceKey<PlacedFeature> LARCH = registerKey("larch");
+    public static final ResourceKey<PlacedFeature> FLOWER_MAPLE = registerKey("flower_maple");
     public static final ResourceKey<PlacedFeature> TREES_MAPLE_FOREST = registerKey("trees_maple_forest");
-    public static final ResourceKey<PlacedFeature> TREES_DECIDUOUS = registerKey("trees_maple_forest");
+    public static final ResourceKey<PlacedFeature> TREES_DECIDUOUS = registerKey("trees_deciduous");
+    public static final ResourceKey<PlacedFeature> DECIDUOUS_BUSH = registerKey("deciduous_bush");
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(NET.MODID, name));

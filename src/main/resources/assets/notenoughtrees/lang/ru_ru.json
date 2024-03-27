@@ -1,7 +1,10 @@
 {
   "creativetab.net_tab": "Not Enough Trees",
 
-  "biome.maple_forest": "Кленовый лес",
+  "biome.notenoughtrees.maple_forest": "Кленовый лес",
+  "biome.notenoughtrees.deciduous_woodland": "Листопадный лес",
+  "biome.notenoughtrees.autumnal_deciduous_woodland": "Осенний листопадный лес",
+  "biome.notenoughtrees.lush_desert": "Пышная пустыня",
 
   "block.notenoughtrees.maple_log": "Кленовое бревно",
   "block.notenoughtrees.maple_wood": "Клён",
@@ -83,6 +86,26 @@
   "block.notenoughtrees.beech_hanging_sign": "Буковая подвесная табличка",
   "item.notenoughtrees.beech_boat": "Буковая лодка",
   "item.notenoughtrees.beech_chest_boat": "Буковая грузовая лодка",
+
+  "block.notenoughtrees.larch_log": "Бревно лиственницы",
+  "block.notenoughtrees.larch_wood": "Лиственница",
+  "block.notenoughtrees.stripped_larch_log": "Обтесаное бревно лиственницы",
+  "block.notenoughtrees.stripped_larch_wood": "Обтесаная древесина лиственницы",
+  "block.notenoughtrees.larch_planks": "Доски из лиственницы",
+  "block.notenoughtrees.larch_stairs": "Ступеньки из лиственницы",
+  "block.notenoughtrees.larch_slab": "Плита из лиственницы",
+  "block.notenoughtrees.larch_fence": "Забор из лиственницы",
+  "block.notenoughtrees.larch_fence_gate": "Калитка из лиственницы",
+  "block.notenoughtrees.larch_door": "Дверь из лиственницы",
+  "block.notenoughtrees.larch_trapdoor": "Люк из лиственницы",
+  "block.notenoughtrees.larch_pressure_plate": "Нажимная плита из лиственницы",
+  "block.notenoughtrees.larch_button": "Кнопка из лиственницы",
+  "block.notenoughtrees.larch_leaves": "Хвоя лиственницы",
+  "block.notenoughtrees.larch_sapling": "Саженец лиственницы",
+  "block.notenoughtrees.larch_sign": "Табличка из лиственницы",
+  "block.notenoughtrees.larch_hanging_sign": "Подвесная табличка из лиственницы",
+  "item.notenoughtrees.larch_boat": "Лодка из лиственницы",
+  "item.notenoughtrees.larch_chest_boat": "Грузовая лодка из лиственницы",
 
   "block.notenoughtrees.clover": "Клевер",
   "item.notenoughtrees.four_leaf_clover": "Четырехлистный клевер",

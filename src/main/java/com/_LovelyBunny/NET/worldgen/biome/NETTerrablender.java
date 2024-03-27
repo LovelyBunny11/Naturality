@@ -6,6 +6,6 @@ import terrablender.api.Regions;
 
 public class NETTerrablender {
     public static void registerBiomes() {
-        Regions.register(new NETOverworldRegion(new ResourceLocation(NET.MODID, "overworld"), 3));
+        Regions.register(new NETOverworldRegion(new ResourceLocation(NET.MODID, "overworld"), 6));
     }
 }

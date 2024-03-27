@@ -7,8 +7,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
+import terrablender.api.ParameterUtils;
 import terrablender.api.Region;
 import terrablender.api.RegionType;
+import terrablender.api.VanillaParameterOverlayBuilder;
 
 import java.util.function.Consumer;
 
@@ -18,12 +20,39 @@ public class NETOverworldRegion extends Region {
     }
 
     @Override
-    public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
-        this.addModifiedVanillaOverworldBiomes(mapper, modifiedVanillaOverworldBuilder -> {
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.FOREST, NETBiomes.MAPLE_FOREST);
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.FLOWER_FOREST, NETBiomes.DECIDUOUS_WOODLAND);
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.PLAINS, NETBiomes.AUTUMNAL_DECIDUOUS_WOODLAND);
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.SPARSE_JUNGLE, NETBiomes.LUSH_DESERT);
-        });
-    }
+    public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper)
+            {
+                VanillaParameterOverlayBuilder builder = new VanillaParameterOverlayBuilder();
+                // MAPLE FOREST
+                new ParameterUtils.ParameterPointListBuilder()
+                        .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.NEUTRAL, ParameterUtils.Temperature.NEUTRAL))
+                        .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.HUMID, ParameterUtils.Humidity.HUMID))
+                        .continentalness(ParameterUtils.Continentalness.INLAND)
+                        .erosion(ParameterUtils.Erosion.EROSION_0, ParameterUtils.Erosion.EROSION_2)
+                        .build().forEach(point -> builder.add(point, NETBiomes.MAPLE_FOREST));
+                // DECIDUOUS WOODLAND
+                new ParameterUtils.ParameterPointListBuilder()
+                        .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.NEUTRAL, ParameterUtils.Temperature.NEUTRAL))
+                        .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.HUMID, ParameterUtils.Humidity.HUMID))
+                        .continentalness(ParameterUtils.Continentalness.MID_INLAND)
+                        .erosion(ParameterUtils.Erosion.EROSION_0, ParameterUtils.Erosion.EROSION_2)
+                        .build().forEach(point -> builder.add(point, NETBiomes.DECIDUOUS_WOODLAND));
+                // AUTUMNAL DECIDUOUS WOODLAND
+                new ParameterUtils.ParameterPointListBuilder()
+                        .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.COOL, ParameterUtils.Temperature.COOL))
+                        .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.HUMID, ParameterUtils.Humidity.HUMID))
+                        .continentalness(ParameterUtils.Continentalness.MID_INLAND)
+                        .erosion(ParameterUtils.Erosion.EROSION_0, ParameterUtils.Erosion.EROSION_2)
+                        .build().forEach(point -> builder.add(point, NETBiomes.AUTUMNAL_DECIDUOUS_WOODLAND));
+                // BARRENS
+                new ParameterUtils.ParameterPointListBuilder()
+                        .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.HOT, ParameterUtils.Temperature.WARM))
+                        .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.ARID, ParameterUtils.Humidity.ARID))
+                        .continentalness(ParameterUtils.Continentalness.FAR_INLAND)
+                        .erosion(ParameterUtils.Erosion.EROSION_0, ParameterUtils.Erosion.EROSION_2)
+                        .build().forEach(point -> builder.add(point, NETBiomes.BARRENS));
+
+                builder.build().forEach(mapper::accept);
+            };
 }
+

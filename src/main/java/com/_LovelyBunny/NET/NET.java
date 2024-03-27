@@ -92,10 +92,9 @@ public class NET
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.RARE_CLOVER.get(), RenderType.cutoutMipped());
 
             event.enqueueWork(() -> {
-                Regions.register(new NETOverworldRegion(new ResourceLocation(MODID, "overworld"), 4));
-
-                SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, NETSurfaceRuleData.makeRules());
+                Regions.register(new NETOverworldRegion(new ResourceLocation(MODID, "overworld"), 6));
             });
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, NETSurfaceRuleData.makeRules());
         }
     }
 }

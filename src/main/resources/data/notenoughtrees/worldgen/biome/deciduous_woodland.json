@@ -22,7 +22,7 @@
       "sound": "minecraft:music.overworld.forest"
     },
     "sky_color": 7972607,
-    "water_color": 4159204,
+    "water_color": 4032952,
     "water_fog_color": 329011,
     "foliage_color": 7060032
   },
@@ -84,7 +84,6 @@
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
-      "minecraft:patch_sunflower",
       "notenoughtrees:trees_deciduous"
     ],
     [
@@ -197,5 +196,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.8
+  "temperature": 0.7
 }

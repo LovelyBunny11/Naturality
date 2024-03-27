@@ -1,7 +1,10 @@
 {
   "creativetab.net_tab": "Not Enough Trees",
 
-  "biome.maple_forest": "Maple Forest",
+  "biome.notenoughtrees.maple_forest": "Maple Forest",
+  "biome.notenoughtrees.deciduous_woodland": "Deciduous Woodland",
+  "biome.notenoughtrees.autumnal_deciduous_woodland": "Autumnal Deciduous Woodland",
+  "biome.notenoughtrees.lush_desert": "Lush Desert",
 
   "block.notenoughtrees.maple_log": "Maple Log",
   "block.notenoughtrees.maple_wood": "Maple Wood",
@@ -83,6 +86,26 @@
   "block.notenoughtrees.beech_hanging_sign": "Beech Hanging Sign",
   "item.notenoughtrees.beech_boat": "Beech Boat",
   "item.notenoughtrees.beech_chest_boat": "Beech Boat with Chest",
+
+  "block.notenoughtrees.larch_log": "Larch Log",
+  "block.notenoughtrees.larch_wood": "Larch Wood",
+  "block.notenoughtrees.stripped_larch_log": "Stripped Larch Log",
+  "block.notenoughtrees.stripped_larch_wood": "Stripped Larch Wood",
+  "block.notenoughtrees.larch_planks": "Larch Planks",
+  "block.notenoughtrees.larch_stairs": "Larch Stairs",
+  "block.notenoughtrees.larch_slab": "Larch Slab",
+  "block.notenoughtrees.larch_fence": "Larch Fence",
+  "block.notenoughtrees.larch_fence_gate": "Larch Fence Gate",
+  "block.notenoughtrees.larch_door": "Larch Door",
+  "block.notenoughtrees.larch_trapdoor": "Larch Trapdoor",
+  "block.notenoughtrees.larch_pressure_plate": "Larch Pressure Plate",
+  "block.notenoughtrees.larch_button": "Larch Button",
+  "block.notenoughtrees.larch_leaves": "Larch Leaves",
+  "block.notenoughtrees.larch_sapling": "Larch Sapling",
+  "block.notenoughtrees.larch_sign": "Larch Sign",
+  "block.notenoughtrees.larch_hanging_sign": "Larch Hanging Sign",
+  "item.notenoughtrees.larch_boat": "Larch Boat",
+  "item.notenoughtrees.larch_chest_boat": "Larch Boat with Chest",
 
   "block.notenoughtrees.clover": "Clover Leaf",
   "item.notenoughtrees.four_leaf_clover": "Four-Leaf Clover",

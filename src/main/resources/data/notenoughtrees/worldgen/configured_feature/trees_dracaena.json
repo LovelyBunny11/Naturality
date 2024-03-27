@@ -4,11 +4,11 @@
     "default": "notenoughtrees:dracaena",
     "features": [
       {
-        "chance": 0.0001,
+        "chance": 0.001,
         "feature": "minecraft:acacia"
       },
       {
-        "chance": 0.1,
+        "chance": 0.001,
         "feature": "notenoughtrees:dracaena"
       }
     ]

@@ -84,10 +84,8 @@ public class DracaenaTrunkPlacer extends TrunkPlacer {
 
         BlockPos.MutableBlockPos $$16 = new BlockPos.MutableBlockPos();
         Direction $$17 = Direction.Plane.HORIZONTAL.getRandomDirection(p_272993_);
-        Direction.Axis $$25 = Direction.Axis.X;
-        Direction.Axis $$26 = Direction.Axis.Z;
         Function<BlockState, BlockState> $$18 = (p_273382_) -> {
-            return (BlockState)p_273382_.trySetValue(RotatedPillarBlock.AXIS, $$17.getAxis());
+            return (BlockState)p_273382_;
         };
         $$15.add(this.generateBranch(p_272827_, p_272650_, p_272993_, p_272990_, p_273471_, p_273355_, $$18, $$17, $$6, $$6 < $$13 - 1, $$16.relative(Direction.NORTH).mutable()));
         if ($$10) {

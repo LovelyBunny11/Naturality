@@ -140,7 +140,7 @@ public class NETBoat extends Boat {
         LINDEN("linden", NETBlocks.LINDEN_PLANKS.get()),
         DRACAENA("dracaena", NETBlocks.DRACAENA_PLANKS.get()),
         BEECH("beech", NETBlocks.BEECH_PLANKS.get()),
-        LARCH("beech", NETBlocks.LARCH_PLANKS.get());
+        LARCH("larch", NETBlocks.LARCH_PLANKS.get());
 
         private final String name;
         private final Block planks;

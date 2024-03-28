@@ -214,7 +214,8 @@ public static final RegistryObject<Item> CLOVER = ITEMS.register("clover",
         () -> new BlockItem(NETBlocks.CLOVER.get(),new Item.Properties()));
     public static final RegistryObject<Item> FOUR_LEAF_CLOVER = ITEMS.register("four_leaf_clover",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
-
+    public static final RegistryObject<Item> ALOE = ITEMS.register("aloe",
+            () -> new BlockItem(NETBlocks.ALOE.get(),new Item.Properties()));
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

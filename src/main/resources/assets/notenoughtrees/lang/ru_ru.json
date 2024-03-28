@@ -4,7 +4,11 @@
   "biome.notenoughtrees.maple_forest": "Кленовый лес",
   "biome.notenoughtrees.deciduous_woodland": "Листопадный лес",
   "biome.notenoughtrees.autumnal_deciduous_woodland": "Осенний листопадный лес",
-  "biome.notenoughtrees.lush_desert": "Пышная пустыня",
+  "biome.notenoughtrees.barrens": "Пустоши",
+  "biome.notenoughtrees.wooded_barrens": "Лесистые Пустоши",
+
+  "block.notenoughtrees.sandy_soil": "Песчаная почва",
+  "block.notenoughtrees.aloe": "Алоэ",
 
   "block.notenoughtrees.maple_log": "Кленовое бревно",
   "block.notenoughtrees.maple_wood": "Клён",

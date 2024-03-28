@@ -931,7 +931,8 @@ public class NETBlocks {
     public static final RegistryObject<Block> RARE_CLOVER = BLOCKS.register("rare_clover",
             () -> new PinkPetalsBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS)));
 
-
+    public static final RegistryObject<Block> ALOE = BLOCKS.register("aloe",
+            () -> new AloeBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS)));
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         return toReturn;

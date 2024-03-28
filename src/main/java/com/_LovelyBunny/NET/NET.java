@@ -7,6 +7,7 @@ import com._LovelyBunny.NET.entity.NETEntities;
 import com._LovelyBunny.NET.item.NETCreativeTabs;
 import com._LovelyBunny.NET.item.NETItems;
 import com._LovelyBunny.NET.worldgen.biome.NETOverworldRegion;
+import com._LovelyBunny.NET.worldgen.biome.NETOverworldRegion1;
 import com._LovelyBunny.NET.worldgen.biome.NETSurfaceRuleData;
 import com._LovelyBunny.NET.worldgen.tree.NETTrunkPlacers;
 import com.mojang.logging.LogUtils;
@@ -90,9 +91,11 @@ public class NET
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.LARCH_SAPLING.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.CLOVER.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.RARE_CLOVER.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.ALOE.get(), RenderType.cutoutMipped());
 
             event.enqueueWork(() -> {
-                Regions.register(new NETOverworldRegion(new ResourceLocation(MODID, "overworld"), 6));
+                Regions.register(new NETOverworldRegion(new ResourceLocation(MODID, "overworld"), 3));
+                Regions.register(new NETOverworldRegion1(new ResourceLocation(MODID, "overworld1"), 2));
             });
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, NETSurfaceRuleData.makeRules());
         }

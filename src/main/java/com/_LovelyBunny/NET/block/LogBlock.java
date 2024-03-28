@@ -36,11 +36,9 @@ public class LogBlock extends RotatedPillarBlock{
             if(state.is(NETBlocks.MAPLE_LOG.get())) {
                 return NETBlocks.STRIPPED_MAPLE_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
-
             if(state.is(NETBlocks.LINDEN_LOG.get())) {
                 return NETBlocks.STRIPPED_LINDEN_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
-
             if(state.is(NETBlocks.DRACAENA_LOG.get())) {
                 return NETBlocks.STRIPPED_DRACAENA_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }

@@ -4,7 +4,11 @@
   "biome.notenoughtrees.maple_forest": "Maple Forest",
   "biome.notenoughtrees.deciduous_woodland": "Deciduous Woodland",
   "biome.notenoughtrees.autumnal_deciduous_woodland": "Autumnal Deciduous Woodland",
-  "biome.notenoughtrees.lush_desert": "Lush Desert",
+  "biome.notenoughtrees.barrens": "Barrens",
+  "biome.notenoughtrees.wooded_barrens": "Wooded Barrens",
+
+  "block.notenoughtrees.sandy_soil": "Sandy Soil",
+  "block.notenoughtrees.aloe": "Aloe",
 
   "block.notenoughtrees.maple_log": "Maple Log",
   "block.notenoughtrees.maple_wood": "Maple Wood",

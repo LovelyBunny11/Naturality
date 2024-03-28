@@ -27,30 +27,26 @@ public class NETOverworldRegion extends Region {
                 new ParameterUtils.ParameterPointListBuilder()
                         .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.NEUTRAL, ParameterUtils.Temperature.NEUTRAL))
                         .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.HUMID, ParameterUtils.Humidity.HUMID))
-                        .continentalness(ParameterUtils.Continentalness.INLAND)
+                        .continentalness(ParameterUtils.Continentalness.FAR_INLAND)
                         .erosion(ParameterUtils.Erosion.EROSION_0, ParameterUtils.Erosion.EROSION_2)
+                        .weirdness(ParameterUtils.Weirdness.VALLEY)
                         .build().forEach(point -> builder.add(point, NETBiomes.MAPLE_FOREST));
                 // DECIDUOUS WOODLAND
                 new ParameterUtils.ParameterPointListBuilder()
                         .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.NEUTRAL, ParameterUtils.Temperature.NEUTRAL))
                         .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.HUMID, ParameterUtils.Humidity.HUMID))
-                        .continentalness(ParameterUtils.Continentalness.MID_INLAND)
+                        .continentalness(ParameterUtils.Continentalness.INLAND)
                         .erosion(ParameterUtils.Erosion.EROSION_0, ParameterUtils.Erosion.EROSION_2)
+                        .weirdness(ParameterUtils.Weirdness.VALLEY)
                         .build().forEach(point -> builder.add(point, NETBiomes.DECIDUOUS_WOODLAND));
                 // AUTUMNAL DECIDUOUS WOODLAND
                 new ParameterUtils.ParameterPointListBuilder()
                         .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.COOL, ParameterUtils.Temperature.COOL))
                         .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.HUMID, ParameterUtils.Humidity.HUMID))
-                        .continentalness(ParameterUtils.Continentalness.MID_INLAND)
+                        .continentalness(ParameterUtils.Continentalness.INLAND)
                         .erosion(ParameterUtils.Erosion.EROSION_0, ParameterUtils.Erosion.EROSION_2)
+                        .weirdness(ParameterUtils.Weirdness.VALLEY)
                         .build().forEach(point -> builder.add(point, NETBiomes.AUTUMNAL_DECIDUOUS_WOODLAND));
-                // BARRENS
-                new ParameterUtils.ParameterPointListBuilder()
-                        .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.HOT, ParameterUtils.Temperature.WARM))
-                        .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.ARID, ParameterUtils.Humidity.ARID))
-                        .continentalness(ParameterUtils.Continentalness.FAR_INLAND)
-                        .erosion(ParameterUtils.Erosion.EROSION_0, ParameterUtils.Erosion.EROSION_2)
-                        .build().forEach(point -> builder.add(point, NETBiomes.BARRENS));
 
                 builder.build().forEach(mapper::accept);
             };

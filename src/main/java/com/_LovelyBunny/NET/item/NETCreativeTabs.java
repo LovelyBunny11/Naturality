@@ -94,6 +94,7 @@ public class NETCreativeTabs {
                         pOutput.accept(NETItems.LARCH_SAPLING.get());
                         pOutput.accept(NETItems.CLOVER.get());
                         pOutput.accept(NETItems.FOUR_LEAF_CLOVER.get());
+                        pOutput.accept(NETItems.ALOE.get());
                         pOutput.accept(NETItems.MAPLE_SIGN.get());
                         pOutput.accept(NETItems.LINDEN_SIGN.get());
                         pOutput.accept(NETItems.DRACAENA_SIGN.get());

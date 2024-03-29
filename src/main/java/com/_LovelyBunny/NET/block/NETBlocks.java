@@ -2,20 +2,17 @@ package com._LovelyBunny.NET.block;
 
 import com._LovelyBunny.NET.NET;
 import com._LovelyBunny.NET.block.entity.NETWoodTypes;
-import com._LovelyBunny.NET.item.NETItems;
 import com._LovelyBunny.NET.worldgen.tree.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.grower.OakTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -930,9 +927,12 @@ public class NETBlocks {
         () -> new PinkPetalsBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS)));
     public static final RegistryObject<Block> RARE_CLOVER = BLOCKS.register("rare_clover",
             () -> new PinkPetalsBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS)));
-
     public static final RegistryObject<Block> ALOE = BLOCKS.register("aloe",
             () -> new AloeBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS)));
+    public static final RegistryObject<Block> DRAGON_FRUIT = BLOCKS.register("dragon_fruit",
+            () -> new DragonFruitBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.CAVE_VINES).pushReaction(PushReaction.DESTROY)));
+    public static final RegistryObject<Block> DRAGON_FRUIT_PLANT = BLOCKS.register("dragon_fruit_plant",
+            () -> new DragonFruitPlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.CAVE_VINES).pushReaction(PushReaction.DESTROY)));
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         return toReturn;

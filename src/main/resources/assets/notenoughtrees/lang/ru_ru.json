@@ -4,8 +4,7 @@
   "biome.notenoughtrees.maple_forest": "Кленовый лес",
   "biome.notenoughtrees.deciduous_woodland": "Листопадный лес",
   "biome.notenoughtrees.autumnal_deciduous_woodland": "Осенний листопадный лес",
-  "biome.notenoughtrees.barrens": "Пустоши",
-  "biome.notenoughtrees.wooded_barrens": "Лесистые Пустоши",
+  "biome.notenoughtrees.lush_desert": "Пышная пустыня",
 
   "block.notenoughtrees.sandy_soil": "Песчаная почва",
   "block.notenoughtrees.aloe": "Алоэ",
@@ -113,6 +112,7 @@
 
   "block.notenoughtrees.clover": "Клевер",
   "item.notenoughtrees.four_leaf_clover": "Четырехлистный клевер",
+  "item.notenoughtrees.dragon_fruit": "Питахайя",
 
   "entity.notenoughtrees.chest_boat": "Грузовая лодка"
 }

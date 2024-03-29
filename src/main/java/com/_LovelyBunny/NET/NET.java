@@ -9,6 +9,7 @@ import com._LovelyBunny.NET.item.NETItems;
 import com._LovelyBunny.NET.worldgen.biome.NETOverworldRegion;
 import com._LovelyBunny.NET.worldgen.biome.NETOverworldRegion1;
 import com._LovelyBunny.NET.worldgen.biome.NETSurfaceRuleData;
+import com._LovelyBunny.NET.worldgen.biome.NETSurfaceRuleData1;
 import com._LovelyBunny.NET.worldgen.tree.NETTrunkPlacers;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -92,12 +93,15 @@ public class NET
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.CLOVER.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.RARE_CLOVER.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NETBlocks.ALOE.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.DRAGON_FRUIT.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NETBlocks.DRAGON_FRUIT_PLANT.get(), RenderType.cutoutMipped());
 
             event.enqueueWork(() -> {
                 Regions.register(new NETOverworldRegion(new ResourceLocation(MODID, "overworld"), 3));
                 Regions.register(new NETOverworldRegion1(new ResourceLocation(MODID, "overworld1"), 2));
             });
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, NETSurfaceRuleData.makeRules());
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, NETSurfaceRuleData1.makeRules());
         }
     }
 }

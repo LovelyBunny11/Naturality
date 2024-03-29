@@ -6,7 +6,7 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.2,
+  "downfall": 0.6,
   "effects": {
     "fog_color": 12638463,
     "mood_sound": {
@@ -19,13 +19,13 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:music.overworld.forest"
+      "sound": "minecraft:music.overworld.desert"
     },
     "sky_color": 7972607,
     "water_color": 4159204,
     "water_fog_color": 329011,
-    "grass_color": 6516293,
-    "foliage_color": 6516293
+    "grass_color": 8954701,
+    "foliage_color": 8627281
   },
   "features": [
     [],
@@ -79,11 +79,12 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_grass_forest",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane",
-      "notenoughtrees:trees_dracaena"
+      "minecraft:patch_grass_plain",
+      "minecraft:patch_dead_bush_2",
+      "minecraft:patch_sugar_cane_desert",
+      "notenoughtrees:trees_dracaena",
+      "notenoughtrees:patch_aloe",
+      "notenoughtrees:dragon_fruit"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -101,38 +102,6 @@
       }
     ],
     "axolotls": [],
-    "creature": [
-      {
-        "type": "minecraft:sheep",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 12
-      },
-      {
-        "type": "minecraft:pig",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:chicken",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:cow",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 8
-      },
-      {
-        "type": "minecraft:rabbit",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 6.5
-      }
-    ],
     "misc": [],
     "monster": [
       {
@@ -195,5 +164,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 1.3
+  "temperature": 0.7
 }

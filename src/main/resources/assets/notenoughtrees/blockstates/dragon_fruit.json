@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "berries=false": {
+      "model": "notenoughtrees:block/dragon_fruit"
+    },
+    "berries=true": {
+      "model": "notenoughtrees:block/dragon_fruit_fruit"
+    }
+  }
+}

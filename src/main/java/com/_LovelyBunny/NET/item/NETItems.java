@@ -3,6 +3,8 @@ package com._LovelyBunny.NET.item;
 import com._LovelyBunny.NET.NET;
 import com._LovelyBunny.NET.block.NETBlocks;
 import com._LovelyBunny.NET.entity.NETBoat;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -216,6 +218,8 @@ public static final RegistryObject<Item> CLOVER = ITEMS.register("clover",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> ALOE = ITEMS.register("aloe",
             () -> new BlockItem(NETBlocks.ALOE.get(),new Item.Properties()));
+    public static final RegistryObject<Item> DRAGON_FRUIT = ITEMS.register("dragon_fruit",
+            () -> new BlockItem(NETBlocks.DRAGON_FRUIT.get(),new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.1F).build())));
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

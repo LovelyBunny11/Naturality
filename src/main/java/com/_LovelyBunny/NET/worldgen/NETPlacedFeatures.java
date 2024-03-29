@@ -22,6 +22,8 @@ public class NETPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DRACAENA = registerKey("dracaena");
     public static final ResourceKey<PlacedFeature> BEECH = registerKey("beech");
     public static final ResourceKey<PlacedFeature> LARCH = registerKey("larch");
+    public static final ResourceKey<PlacedFeature> ALOE = registerKey("aloe");
+    public static final ResourceKey<PlacedFeature> DRAGON_FRUIT = registerKey("dragon_fruit");
     public static final ResourceKey<PlacedFeature> FLOWER_MAPLE = registerKey("flower_maple");
     public static final ResourceKey<PlacedFeature> TREES_MAPLE_FOREST = registerKey("trees_maple_forest");
     public static final ResourceKey<PlacedFeature> TREES_DECIDUOUS = registerKey("trees_deciduous");

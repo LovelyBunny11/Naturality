@@ -15,8 +15,4 @@ public class NETBiomes {
             new ResourceLocation(NET.MODID, "deciduous_woodland"));
     public static final ResourceKey<Biome> AUTUMNAL_DECIDUOUS_WOODLAND = ResourceKey.create(Registries.BIOME,
             new ResourceLocation(NET.MODID, "autumnal_deciduous_woodland"));
-    public static final ResourceKey<Biome> BARRENS = ResourceKey.create(Registries.BIOME,
-            new ResourceLocation(NET.MODID, "barrens"));
-    public static final ResourceKey<Biome> WOODED_BARRENS = ResourceKey.create(Registries.BIOME,
-            new ResourceLocation(NET.MODID, "wooded_barrens"));
 }

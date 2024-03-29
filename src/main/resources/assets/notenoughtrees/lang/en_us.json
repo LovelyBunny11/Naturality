@@ -4,8 +4,7 @@
   "biome.notenoughtrees.maple_forest": "Maple Forest",
   "biome.notenoughtrees.deciduous_woodland": "Deciduous Woodland",
   "biome.notenoughtrees.autumnal_deciduous_woodland": "Autumnal Deciduous Woodland",
-  "biome.notenoughtrees.barrens": "Barrens",
-  "biome.notenoughtrees.wooded_barrens": "Wooded Barrens",
+  "biome.notenoughtrees.lush_desert": "Lush Desert",
 
   "block.notenoughtrees.sandy_soil": "Sandy Soil",
   "block.notenoughtrees.aloe": "Aloe",
@@ -113,6 +112,7 @@
 
   "block.notenoughtrees.clover": "Clover Leaf",
   "item.notenoughtrees.four_leaf_clover": "Four-Leaf Clover",
+  "item.notenoughtrees.dragon_fruit": "Dragon Fruit",
 
   "entity.notenoughtrees.chest_boat": "Boat with Chest"
 }

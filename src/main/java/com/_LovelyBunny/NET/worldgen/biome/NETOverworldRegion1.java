@@ -26,18 +26,10 @@ public class NETOverworldRegion1 extends Region {
                 new ParameterUtils.ParameterPointListBuilder()
                         .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.HOT, ParameterUtils.Temperature.HOT))
                         .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.DRY, ParameterUtils.Humidity.DRY))
-                        .continentalness(ParameterUtils.Continentalness.MID_INLAND)
-                        .weirdness(ParameterUtils.Weirdness.VALLEY)
-                        .erosion(ParameterUtils.Erosion.EROSION_0, ParameterUtils.Erosion.EROSION_2)
-                        .build().forEach(point -> builder.add(point, NETBiomes.BARRENS));
-                // WOODED_BARRENS
-                new ParameterUtils.ParameterPointListBuilder()
-                        .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.HOT, ParameterUtils.Temperature.HOT))
-                        .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.DRY, ParameterUtils.Humidity.DRY))
                         .continentalness(ParameterUtils.Continentalness.FAR_INLAND)
                         .weirdness(ParameterUtils.Weirdness.VALLEY)
                         .erosion(ParameterUtils.Erosion.EROSION_0, ParameterUtils.Erosion.EROSION_2)
-                        .build().forEach(point -> builder.add(point, NETBiomes.WOODED_BARRENS));
+                        .build().forEach(point -> builder.add(point, NETBiomesWithSurfaceRules.LUSH_DESERT));
 
                 builder.build().forEach(mapper::accept);
             };

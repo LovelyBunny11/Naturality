@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "naturality:block/dracaena_slab"
+    },
+    "type=double": {
+      "model": "naturality:block/dracaena_planks"
+    },
+    "type=top": {
+      "model": "naturality:block/dracaena_slab_top"
+    }
+  }
+}

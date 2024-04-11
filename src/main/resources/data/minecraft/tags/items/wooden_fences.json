@@ -1,9 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_fence",
-    "notenoughtrees:linden_fence",
-    "notenoughtrees:dracaena_fence",
-    "notenoughtrees:beech_fence",
-    "notenoughtrees:larch_fence"
+    "naturality:maple_fence",
+    "naturality:linden_fence",
+    "naturality:dracaena_fence",
+    "naturality:beech_fence",
+    "naturality:larch_fence",
+    "naturality:jacaranda_fence"
   ]
 }

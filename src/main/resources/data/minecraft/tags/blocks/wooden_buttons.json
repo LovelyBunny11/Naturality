@@ -1,9 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_button",
-    "notenoughtrees:linden_button",
-    "notenoughtrees:dracaena_button",
-    "notenoughtrees:beech_button",
-    "notenoughtrees:larch_button"
+    "naturality:maple_button",
+    "naturality:linden_button",
+    "naturality:dracaena_button",
+    "naturality:beech_button",
+    "naturality:larch_button",
+    "naturality:jacaranda_button"
   ]
 }

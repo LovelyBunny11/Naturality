@@ -1,9 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_sign",
-    "notenoughtrees:linden_sign",
-    "notenoughtrees:dracaena_sign",
-    "notenoughtrees:beech_sign",
-    "notenoughtrees:larch_sign"
+    "naturality:maple_sign",
+    "naturality:linden_sign",
+    "naturality:dracaena_sign",
+    "naturality:beech_sign",
+    "naturality:larch_sign",
+    "naturality:jacaranda_sign"
   ]
 }

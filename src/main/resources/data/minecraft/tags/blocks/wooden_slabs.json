@@ -1,9 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_slab",
-    "notenoughtrees:linden_slab",
-    "notenoughtrees:dracaena_slab",
-    "notenoughtrees:beech_slab",
-    "notenoughtrees:larch_slab"
+    "naturality:maple_slab",
+    "naturality:linden_slab",
+    "naturality:dracaena_slab",
+    "naturality:beech_slab",
+    "naturality:larch_slab",
+    "naturality:jacaranda_slab"
   ]
 }

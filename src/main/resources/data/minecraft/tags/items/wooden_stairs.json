@@ -1,9 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_stairs",
-    "notenoughtrees:linden_stairs",
-    "notenoughtrees:dracaena_stairs",
-    "notenoughtrees:beech_stairs",
-    "notenoughtrees:larch_stairs"
+    "naturality:maple_stairs",
+    "naturality:linden_stairs",
+    "naturality:dracaena_stairs",
+    "naturality:beech_stairs",
+    "naturality:larch_stairs",
+    "naturality:jacaranda_stairs"
   ]
 }

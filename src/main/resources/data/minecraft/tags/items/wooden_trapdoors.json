@@ -1,9 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_trapdoor",
-    "notenoughtrees:linden_trapdoor",
-    "notenoughtrees:dracaena_trapdoor",
-    "notenoughtrees:beech_trapdoor",
-    "notenoughtrees:larch_trapdoor"
+    "naturality:maple_trapdoor",
+    "naturality:linden_trapdoor",
+    "naturality:dracaena_trapdoor",
+    "naturality:beech_trapdoor",
+    "naturality:larch_trapdoor",
+    "naturality:jacaranda_trapdoor"
   ]
 }

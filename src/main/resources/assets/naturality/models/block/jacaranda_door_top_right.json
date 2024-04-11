@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_right",
+  "textures": {
+    "bottom": "naturality:block/jacaranda_door_bottom",
+    "top": "naturality:block/jacaranda_door_top"
+  }
+}

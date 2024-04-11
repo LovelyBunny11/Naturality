@@ -1,9 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_pressure_plate",
-    "notenoughtrees:linden_pressure_plate",
-    "notenoughtrees:dracaena_pressure_plate",
-    "notenoughtrees:beech_pressure_plate",
-    "notenoughtrees:larch_pressure_plate"
+    "naturality:maple_pressure_plate",
+    "naturality:linden_pressure_plate",
+    "naturality:dracaena_pressure_plate",
+    "naturality:beech_pressure_plate",
+    "naturality:larch_pressure_plate",
+    "naturality:jacaranda_pressure_plate"
   ]
 }

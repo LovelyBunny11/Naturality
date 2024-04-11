@@ -1,0 +1,38 @@
+{
+  "parent": "naturality:naturality/root",
+  "criteria": {
+    "clover": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "naturality:four_leaf_clover"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.naturality.get_clover.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "naturality:four_leaf_clover"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.naturality.get_clover.title"
+    }
+  },
+  "requirements": [
+    [
+      "clover"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

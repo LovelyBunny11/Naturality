@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "naturality:block/dracaena_planks",
+    "side": "naturality:block/dracaena_planks",
+    "top": "naturality:block/dracaena_planks"
+  }
+}

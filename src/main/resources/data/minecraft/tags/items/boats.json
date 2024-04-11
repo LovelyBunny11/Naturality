@@ -1,9 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_boat",
-    "notenoughtrees:linden_boat",
-    "notenoughtrees:dracaena_boat",
-    "notenoughtrees:beech_boat",
-    "notenoughtrees:larch_boat"
+    "naturality:maple_boat",
+    "naturality:linden_boat",
+    "naturality:dracaena_boat",
+    "naturality:beech_boat",
+    "naturality:larch_boat",
+    "naturality:jacaranda_boat"
   ]
 }

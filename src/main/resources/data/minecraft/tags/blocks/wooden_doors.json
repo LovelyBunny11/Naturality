@@ -1,6 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_door",
-    "notenoughtrees:linden_door"
+    "naturality:maple_door",
+    "naturality:linden_door",
+    "naturality:beech_door",
+    "naturality:dracaena_door",
+    "naturality:larch_door",
+    "naturality:jacaranda_door"
   ]
 }

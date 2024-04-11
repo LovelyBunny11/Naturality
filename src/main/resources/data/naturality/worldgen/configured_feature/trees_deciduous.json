@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "naturality:beech",
+    "features": [
+      {
+        "chance": 0.1,
+        "feature": "naturality:maple"
+      },
+      {
+        "chance": 0.3,
+        "feature": "naturality:beech"
+      },
+      {
+        "chance": 0.3,
+        "feature": "naturality:linden"
+      },
+      {
+        "chance": 0.33333334,
+        "feature": "naturality:larch"
+      },
+      {
+        "chance": 1,
+        "feature": "naturality:deciduous_bush"
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right_open",
+  "textures": {
+    "bottom": "naturality:block/dracaena_door_bottom",
+    "top": "naturality:block/dracaena_door_top"
+  }
+}

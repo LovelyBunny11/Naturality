@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "naturality:block/larch_slab"
+    },
+    "type=double": {
+      "model": "naturality:block/larch_planks"
+    },
+    "type=top": {
+      "model": "naturality:block/larch_slab_top"
+    }
+  }
+}

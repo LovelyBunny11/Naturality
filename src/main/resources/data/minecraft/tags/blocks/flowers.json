@@ -1,0 +1,12 @@
+{
+  "values": [
+    "#minecraft:small_flowers",
+    "#minecraft:tall_flowers",
+    "naturality:flowering_jasmine_leaves",
+    "naturality:jacaranda_leaves",
+    "naturality:jacaranda_carpet",
+    "naturality:jacaranda_sapling",
+    "naturality:wisteria",
+    "naturality:wisteria_plant"
+  ]
+}

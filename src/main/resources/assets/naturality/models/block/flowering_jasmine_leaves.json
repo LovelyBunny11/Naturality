@@ -1,0 +1,7 @@
+{
+  "parent": "naturality:block/leaves_overlay",
+  "textures": {
+    "leaves": "naturality:block/flowering_jasmine_leaves",
+    "overlay": "naturality:block/jasmine_leaves_overlay"
+  }
+}

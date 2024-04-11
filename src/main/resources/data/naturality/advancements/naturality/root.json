@@ -1,0 +1,30 @@
+{
+  "criteria": {
+    "consumed_item": {
+      "conditions": {},
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "naturality:textures/gui/advancements/backgrounds/moss.png",
+    "description": {
+      "translate": "advancements.naturality.root.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "naturality:milkweed"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.naturality.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "consumed_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

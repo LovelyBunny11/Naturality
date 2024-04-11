@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "naturality:block/milkweed_bottom"
+    },
+    "half=upper": {
+      "model": "naturality:block/milkweed_top"
+    }
+  }
+}

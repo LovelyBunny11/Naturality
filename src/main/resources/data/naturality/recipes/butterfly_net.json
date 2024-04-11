@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+      "P": {
+        "tag": "minecraft:planks"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "SS",
+    "SP",
+    " #"
+  ],
+  "result": {
+    "item": "naturality:butterfly_net"
+  },
+  "show_notification": true
+}

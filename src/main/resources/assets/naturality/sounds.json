@@ -1,0 +1,21 @@
+{
+  "moth_ambient": {
+    "subtitles": "sounds.naturality.moth_ambient",
+    "sounds": [
+      "naturality:moth_ambient"
+    ]
+  },
+  "moth_hurt": {
+    "subtitles": "sounds.naturality.moth_hurt",
+    "sounds": [
+      "naturality:moth_hurt1",
+      "naturality:moth_hurt2"
+    ]
+  },
+  "moth_death": {
+    "subtitles": "sounds.naturality.moth_death",
+    "sounds": [
+      "naturality:moth_death"
+    ]
+  }
+}

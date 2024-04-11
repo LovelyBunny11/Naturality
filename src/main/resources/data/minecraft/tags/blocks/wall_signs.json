@@ -1,9 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_wall_sign",
-    "notenoughtrees:linden_wall_sign",
-    "notenoughtrees:dracaena_wall_sign",
-    "notenoughtrees:beech_wall_sign",
-    "notenoughtrees:larch_wall_sign"
+    "naturality:maple_wall_sign",
+    "naturality:linden_wall_sign",
+    "naturality:dracaena_wall_sign",
+    "naturality:beech_wall_sign",
+    "naturality:larch_wall_sign",
+    "naturality:jacaranda_wall_sign"
   ]
 }

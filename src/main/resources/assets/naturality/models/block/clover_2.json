@@ -1,0 +1,7 @@
+{
+  "parent": "naturality:block/flowerbed_2",
+  "textures": {
+    "flowerbed": "naturality:block/clover",
+    "stem": "naturality:block/clover_stem"
+  }
+}

@@ -1,9 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_planks",
-    "notenoughtrees:linden_planks",
-    "notenoughtrees:dracaena_planks",
-    "notenoughtrees:beech_planks",
-    "notenoughtrees:larch_planks"
+    "naturality:maple_planks",
+    "naturality:linden_planks",
+    "naturality:dracaena_planks",
+    "naturality:beech_planks",
+    "naturality:larch_planks",
+    "naturality:jacaranda_planks"
   ]
 }

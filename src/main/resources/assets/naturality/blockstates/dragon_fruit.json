@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "berries=false": {
+      "model": "naturality:block/dragon_fruit"
+    },
+    "berries=true": {
+      "model": "naturality:block/dragon_fruit_fruit"
+    }
+  }
+}

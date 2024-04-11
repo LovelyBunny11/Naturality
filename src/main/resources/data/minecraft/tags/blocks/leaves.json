@@ -1,9 +1,12 @@
 {
   "values": [
-    "notenoughtrees:maple_leaves",
-    "notenoughtrees:linden_leaves",
-    "notenoughtrees:dracaena_leaves",
-    "notenoughtrees:beech_leaves",
-    "notenoughtrees:larch_leaves"
+    "naturality:maple_leaves",
+    "naturality:linden_leaves",
+    "naturality:dracaena_leaves",
+    "naturality:beech_leaves",
+    "naturality:larch_leaves",
+    "naturality:jacaranda_leaves",
+    "naturality:jasmine_leaves",
+    "naturality:flowering_jasmine_leaves"
   ]
 }

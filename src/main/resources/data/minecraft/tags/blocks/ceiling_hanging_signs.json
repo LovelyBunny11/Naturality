@@ -1,9 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_hanging_sign",
-    "notenoughtrees:linden_hanging_sign",
-    "notenoughtrees:dracaena_hanging_sign",
-    "notenoughtrees:beech_hanging_sign",
-    "notenoughtrees:larch_hanging_sign"
+    "naturality:maple_hanging_sign",
+    "naturality:linden_hanging_sign",
+    "naturality:dracaena_hanging_sign",
+    "naturality:beech_hanging_sign",
+    "naturality:larch_hanging_sign",
+    "naturality:jacaranda_hanging_sign"
   ]
 }

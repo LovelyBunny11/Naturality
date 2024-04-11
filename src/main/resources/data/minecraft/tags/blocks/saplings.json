@@ -1,9 +1,10 @@
 {
   "values": [
-    "notenoughtrees:maple_sapling",
-    "notenoughtrees:linden_sapling",
-    "notenoughtrees:dracaena_sapling",
-    "notenoughtrees:beech_sapling",
-    "notenoughtrees:larch_sapling"
+    "naturality:maple_sapling",
+    "naturality:linden_sapling",
+    "naturality:dracaena_sapling",
+    "naturality:beech_sapling",
+    "naturality:larch_sapling",
+    "naturality:jacaranda_sapling"
   ]
 }

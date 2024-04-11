@@ -1,0 +1,63 @@
+{
+  "parent": "naturality:naturality/get_clover",
+  "criteria": {
+    "butterflies": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "naturality:monarch_butterfly"
+            ]
+          },
+          {
+            "items": [
+              "naturality:morpho_butterfly"
+            ]
+          },
+          {
+            "items": [
+              "naturality:red_admiral_butterfly"
+            ]
+          },
+          {
+            "items": [
+              "naturality:luna_moth"
+            ]
+          },
+          {
+            "items": [
+              "naturality:rosy_maple_moth"
+            ]
+          },
+          {
+            "items": [
+              "naturality:death_head_hawk_moth"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.naturality.collect_all_butterflies.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "naturality:morpho_butterfly"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.naturality.collect_all_butterflies.title"
+    }
+  },
+  "requirements": [
+    [
+      "butterflies"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -2,8 +2,6 @@ package com._LovelyBunny.Naturality.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.FastColor;
 
 public class MothDustParticle extends TextureSheetParticle {
     private static final float ACCELERATION_SCALE = 0.0025F;

@@ -33,23 +33,6 @@ public class NaturalityBlocks {
             () -> new LogBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> DRACAENA_LOG = registerBlock("dracaena_log",
             () -> new LogBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_LOG).sound(SoundType.CHERRY_WOOD)));
-    public static final RegistryObject<Block> DRACAENA_BRANCHES = registerBlock("dracaena_branches",
-            () -> new MangroveRootsBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_ROOTS).sound(SoundType.CHERRY_WOOD)){
-                @Override
-                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return true;
-                }
-
-                @Override
-                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 20;
-                }
-
-                @Override
-                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 5;
-                }
-            });
     public static final RegistryObject<Block> MAPLE_WOOD = registerBlock("maple_wood",
             () -> new LogBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> LINDEN_WOOD = registerBlock("linden_wood",
@@ -1111,8 +1094,6 @@ public class NaturalityBlocks {
             () -> new DragonFruitBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.CAVE_VINES).pushReaction(PushReaction.DESTROY)));
     public static final RegistryObject<Block> DRAGON_FRUIT_PLANT = BLOCKS.register("dragon_fruit_plant",
             () -> new DragonFruitPlantBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.CAVE_VINES).pushReaction(PushReaction.DESTROY)));
-    public static final RegistryObject<Block> DENSE_GRASS = BLOCKS.register("dense_grass",
-            () -> new DenseGrassBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES)));
     public static final RegistryObject<Block> WISTERIA = BLOCKS.register("wisteria",
             () -> new WisteriaBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().instabreak().sound(SoundType.CAVE_VINES).pushReaction(PushReaction.DESTROY)));
     public static final RegistryObject<Block> WISTERIA_PLANT = BLOCKS.register("wisteria_plant",

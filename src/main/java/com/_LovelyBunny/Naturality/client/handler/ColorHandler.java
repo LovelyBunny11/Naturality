@@ -21,7 +21,7 @@ public class ColorHandler {
         event.getItemColors().register((stack, tintIndex) -> {
                     BlockState state = ((BlockItem)stack.getItem()).getBlock().defaultBlockState();
                     return event.getBlockColors().getColor(state, null, null, tintIndex); },
-                NaturalityBlocks.MAPLE_LEAVES.get(), NaturalityBlocks.LINDEN_LEAVES.get(), NaturalityBlocks.BEECH_LEAVES.get(), NaturalityBlocks.LARCH_LEAVES.get(), NaturalityBlocks.DENSE_GRASS.get(), NaturalityBlocks.JASMINE_LEAVES.get(), NaturalityBlocks.FLOWERING_JASMINE_LEAVES.get());
+                NaturalityBlocks.MAPLE_LEAVES.get(), NaturalityBlocks.LINDEN_LEAVES.get(), NaturalityBlocks.BEECH_LEAVES.get(), NaturalityBlocks.LARCH_LEAVES.get(), NaturalityBlocks.JASMINE_LEAVES.get(), NaturalityBlocks.FLOWERING_JASMINE_LEAVES.get());
     }
 
     @SubscribeEvent
@@ -31,7 +31,6 @@ public class ColorHandler {
                         world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColor.getDefaultColor(),
                 NaturalityBlocks.MAPLE_LEAVES.get(), NaturalityBlocks.LINDEN_LEAVES.get(), NaturalityBlocks.BEECH_LEAVES.get(), NaturalityBlocks.LARCH_LEAVES.get(), NaturalityBlocks.JASMINE_LEAVES.get(), NaturalityBlocks.FLOWERING_JASMINE_LEAVES.get());
             event.getBlockColors().register((state, world, pos, tintIndex) ->
-    world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : GrassColor.getDefaultColor(),
-                NaturalityBlocks.DENSE_GRASS.get(), NaturalityBlocks.CLOVER.get(), NaturalityBlocks.RARE_CLOVER.get());
+    world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : GrassColor.getDefaultColor(), NaturalityBlocks.CLOVER.get(), NaturalityBlocks.RARE_CLOVER.get());
     }
 }

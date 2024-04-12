@@ -24,8 +24,8 @@
     "sky_color": 7972607,
     "water_color": 4159204,
     "water_fog_color": 329011,
-    "grass_color": 8954701,
-    "foliage_color": 8627281
+    "grass_color": 9875565,
+    "foliage_color": 11389044
   },
   "features": [
     [],
@@ -79,9 +79,8 @@
     ],
     [
       "minecraft:glow_lichen",
-      "naturality:lush_desert_vegetation",
       "minecraft:patch_dead_bush_2",
-      "minecraft:patch_grass_forest",
+      "minecraft:patch_grass_plain",
       "minecraft:patch_sugar_cane_desert",
       "naturality:trees_dracaena",
       "naturality:patch_aloe",

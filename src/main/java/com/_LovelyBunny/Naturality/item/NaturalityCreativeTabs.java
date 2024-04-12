@@ -18,7 +18,6 @@ public class NaturalityCreativeTabs {
                     .title(Component.translatable("creativetab.naturality_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(NaturalityItems.SANDY_SOIL.get());
-//                        pOutput.accept(NaturalityItems.PEAT_MOSS.get());
                         pOutput.accept(NaturalityItems.MAPLE_LOG.get());
                         pOutput.accept(NaturalityItems.LINDEN_LOG.get());
                         pOutput.accept(NaturalityItems.DRACAENA_LOG.get());
@@ -63,6 +62,7 @@ public class NaturalityCreativeTabs {
                         pOutput.accept(NaturalityItems.JACARANDA_SLAB.get());
                         pOutput.accept(NaturalityItems.MAPLE_FENCE.get());
                         pOutput.accept(NaturalityItems.LINDEN_FENCE.get());
+                        pOutput.accept(NaturalityItems.DRACAENA_FENCE.get());
                         pOutput.accept(NaturalityItems.BEECH_FENCE.get());
                         pOutput.accept(NaturalityItems.LARCH_FENCE.get());
                         pOutput.accept(NaturalityItems.JACARANDA_FENCE.get());
@@ -111,7 +111,6 @@ public class NaturalityCreativeTabs {
                         pOutput.accept(NaturalityItems.BEECH_SAPLING.get());
                         pOutput.accept(NaturalityItems.LARCH_SAPLING.get());
                         pOutput.accept(NaturalityItems.JACARANDA_SAPLING.get());
-                        pOutput.accept(NaturalityItems.DENSE_GRASS.get());
                         pOutput.accept(NaturalityItems.VIOLET.get());
                         pOutput.accept(NaturalityItems.CLOVER.get());
                         pOutput.accept(NaturalityItems.FOUR_LEAF_CLOVER.get());

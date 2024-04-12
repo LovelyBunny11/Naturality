@@ -3,7 +3,6 @@ package com._LovelyBunny.Naturality.entity;
 import com._LovelyBunny.Naturality.item.NaturalityItems;
 import com._LovelyBunny.Naturality.particle.NaturalityParticleTypes;
 import com._LovelyBunny.Naturality.tag.NaturalityTags;
-import com.google.errorprone.annotations.Var;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -33,8 +32,6 @@ import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
 import net.minecraft.world.entity.ai.util.AirRandomPos;
 import net.minecraft.world.entity.ai.util.HoverRandomPos;
 import net.minecraft.world.entity.animal.*;
-import net.minecraft.world.entity.animal.allay.Allay;
-import net.minecraft.world.entity.animal.allay.AllayAi;
 import net.minecraft.world.entity.monster.CaveSpider;
 import net.minecraft.world.entity.monster.Spider;
 import net.minecraft.world.entity.player.Player;
@@ -97,19 +94,19 @@ public class Moth extends Animal implements FlyingAnimal {
     }
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new WanderGoal());
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new BreedGoal(this, 1.15D));
-        this.goalSelector.addGoal(1, new TemptGoal(this, 1.2D, Ingredient.of(ItemTags.FLOWERS), false));
-        this.goalSelector.addGoal(2, new PanicGoal(this, 1.25));
-        this.goalSelector.addGoal(2, new FollowParentGoal(this, 1.1D));
-        this.goalSelector.addGoal(3, new AvoidEntityGoal(this, Player.class, 6.0F, 1.0, 1.2));
-        this.goalSelector.addGoal(3, new AvoidEntityGoal(this, Spider.class, 6.0F, 1.0, 1.2));
-        this.goalSelector.addGoal(3, new AvoidEntityGoal(this, CaveSpider.class, 6.0F, 1.0, 1.2));
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.1D));
-        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(5, new MothPollinateGoal());
-        this.goalSelector.addGoal(5, new GoToKnownFlowerGoal());
+        this.goalSelector.addGoal(1, new FloatGoal(this));
+        this.goalSelector.addGoal(2, new BreedGoal(this, 1.15D));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.2D, Ingredient.of(ItemTags.FLOWERS), false));
+        this.goalSelector.addGoal(4, new PanicGoal(this, 1.25));
+        this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.1D));
+        this.goalSelector.addGoal(6, new AvoidEntityGoal(this, Player.class, 6.0F, 1.0, 1.2));
+        this.goalSelector.addGoal(7, new AvoidEntityGoal(this, Spider.class, 6.0F, 1.0, 1.2));
+        this.goalSelector.addGoal(8, new AvoidEntityGoal(this, CaveSpider.class, 6.0F, 1.0, 1.2));
+        this.goalSelector.addGoal(9, new WaterAvoidingRandomStrollGoal(this, 1.1D));
+        this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(11, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(12, new MothPollinateGoal());
+        this.goalSelector.addGoal(13, new GoToKnownFlowerGoal());
     }
 
     protected void defineSynchedData() {
@@ -379,11 +376,10 @@ public class Moth extends Animal implements FlyingAnimal {
     protected void playStepSound(BlockPos p_218364_, BlockState p_218365_) {
     }
     public boolean canPollinate() {
-        switch (this.getVariant()) {
-            case DEATH_HEAD_HAWK:
-                return true;
-        }
-        return false;
+        return switch (this.getVariant()) {
+            case LUNA, ROSY_MAPLE -> false;
+            case DEATH_HEAD_HAWK -> true;
+        };
     }
     public boolean removeWhenFarAway(double p_218384_) {
         return false;

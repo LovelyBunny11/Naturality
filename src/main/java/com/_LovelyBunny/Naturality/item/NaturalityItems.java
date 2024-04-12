@@ -26,8 +26,6 @@ public class NaturalityItems {
             () -> new BlockItem(NaturalityBlocks.LINDEN_LOG.get(), new Item.Properties()));
     public static final RegistryObject<Item> DRACAENA_LOG = ITEMS.register("dracaena_log",
             () -> new BlockItem(NaturalityBlocks.DRACAENA_LOG.get(), new Item.Properties()));
-    public static final RegistryObject<Item> DRACAENA_BRANCHES = ITEMS.register("dracaena_branches",
-            () -> new BlockItem(NaturalityBlocks.DRACAENA_BRANCHES.get(), new Item.Properties()));
     public static final RegistryObject<Item> MAPLE_WOOD = ITEMS.register("maple_wood",
             () -> new BlockItem(NaturalityBlocks.MAPLE_WOOD.get(), new Item.Properties()));
     public static final RegistryObject<Item> LINDEN_WOOD = ITEMS.register("linden_wood",
@@ -260,8 +258,6 @@ public class NaturalityItems {
             () -> new BlockItem(NaturalityBlocks.JACARANDA_CARPET.get(),new Item.Properties()));
     public static final RegistryObject<Item> ALOE = ITEMS.register("aloe",
             () -> new BlockItem(NaturalityBlocks.ALOE.get(),new Item.Properties()));
-    public static final RegistryObject<Item> DENSE_GRASS = ITEMS.register("dense_grass",
-            () -> new BlockItem(NaturalityBlocks.DENSE_GRASS.get(),new Item.Properties()));
     public static final RegistryObject<Item> DRAGON_FRUIT = ITEMS.register("dragon_fruit",
             () -> new BlockItem(NaturalityBlocks.DRAGON_FRUIT.get(),new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.1F).build())));
     public static final RegistryObject<Item> WISTERIA = ITEMS.register("wisteria",
@@ -275,8 +271,6 @@ public class NaturalityItems {
             () -> new BlockItem(NaturalityBlocks.MILKWEED.get(),new Item.Properties()));
     public static final RegistryObject<Item> VIOLET = ITEMS.register("violet",
             () -> new BlockItem(NaturalityBlocks.VIOLET.get(),new Item.Properties()));
-//    public static final RegistryObject<Item> PEAT_MOSS = ITEMS.register("peat_moss",
-//            () -> new BlockItem(NaturalityBlocks.PEAT_MOSS.get(),new Item.Properties()));
     public static final RegistryObject<Item> BUTTERFLY_SPAWN_EGG = ITEMS.register("butterfly_spawn_egg",
             () -> new ForgeSpawnEggItem(NaturalityEntityTypes.BUTTERFLY, 0xf08a16,0x241300, new Item.Properties()));
     public static final RegistryObject<Item> MOTH_SPAWN_EGG = ITEMS.register("moth_spawn_egg",

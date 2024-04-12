@@ -20,11 +20,11 @@ public class NaturalityEntityTypes {
                     .sized(1.375f, 0.5625f).build("chest_boat"));
     public static final RegistryObject<EntityType<Moth>> MOTH =
             ENTITY_TYPES.register("moth", () -> EntityType.Builder.<Moth>of(Moth::new, MobCategory.AMBIENT)
-                    .sized(0.7F, 0.6F).build("moth"));
+                    .sized(0.7F, 0.8F).build("moth"));
 
     public static final RegistryObject<EntityType<Butterfly>> BUTTERFLY =
             ENTITY_TYPES.register("butterfly", () -> EntityType.Builder.<Butterfly>of(Butterfly::new, MobCategory.AMBIENT)
-                    .sized(0.7F, 0.6F).build("butterfly"));
+                    .sized(0.7F, 0.8F).build("butterfly"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -5,7 +5,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
 public class NaturalityPlacedFeatures {
     public static final ResourceKey<PlacedFeature> MAPLE = registerKey("maple");
     public static final ResourceKey<PlacedFeature> LINDEN = registerKey("linden");

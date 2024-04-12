@@ -16,7 +16,6 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.Blocks;
@@ -32,7 +31,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
 
 @Mod(Naturality.MODID)
@@ -57,9 +55,12 @@ public class Naturality {
 
         MinecraftForge.EVENT_BUS.register(this);
     }
-
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            NaturalityBiomes.registerBiomes();
+
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, NaturalitySurfaceRuleData.overworld());
+
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NaturalityBlocks.VIOLET.getId(), NaturalityBlocks.POTTED_VIOLET);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NaturalityBlocks.ALOE.getId(), NaturalityBlocks.POTTED_ALOE);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NaturalityBlocks.MAPLE_SAPLING.getId(), NaturalityBlocks.POTTED_MAPLE_SAPLING);
@@ -71,22 +72,31 @@ public class Naturality {
         });
     }
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
+    public void onServerStarting(ServerStartingEvent event) {
+        BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LEAPING,
+                NaturalityItems.FOUR_LEAF_CLOVER.get(), Potions.LUCK));
+        BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LUCK,
+                Items.REDSTONE, NaturalityPotions.LONG_LUCK.get()));
+        BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LUCK,
+                Items.GLOWSTONE_DUST, NaturalityPotions.STRONG_LUCK.get()));
+        BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LUCK,
+                Items.FERMENTED_SPIDER_EYE, NaturalityPotions.UNLUCK.get()));
+        BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(NaturalityPotions.UNLUCK.get(),
+                Items.REDSTONE, NaturalityPotions.LONG_UNLUCK.get()));
+        BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(NaturalityPotions.UNLUCK.get(),
+                Items.GLOWSTONE_DUST, NaturalityPotions.STRONG_UNLUCK.get()));
     }
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
+    @Mod.EventBusSubscriber(modid = Naturality.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
+        public static void onClientSetup(FMLClientSetupEvent event) {
             Sheets.addWoodType(NaturalityWoodTypes.MAPLE);
             Sheets.addWoodType(NaturalityWoodTypes.LINDEN);
             Sheets.addWoodType(NaturalityWoodTypes.DRACAENA);
             Sheets.addWoodType(NaturalityWoodTypes.BEECH);
             Sheets.addWoodType(NaturalityWoodTypes.LARCH);
             Sheets.addWoodType(NaturalityWoodTypes.JACARANDA);
-            ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.DRACAENA_BRANCHES.get(), RenderType.cutoutMipped());
+
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.MAPLE_DOOR.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.LINDEN_DOOR.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.DRACAENA_DOOR.get(), RenderType.cutoutMipped());
@@ -106,7 +116,6 @@ public class Naturality {
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.ALOE.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.DRAGON_FRUIT.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.DRAGON_FRUIT_PLANT.get(), RenderType.cutoutMipped());
-            ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.DENSE_GRASS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.JACARANDA_CARPET.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.WISTERIA.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.WISTERIA_PLANT.get(), RenderType.cutoutMipped());
@@ -121,26 +130,19 @@ public class Naturality {
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.POTTED_BEECH_SAPLING.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.POTTED_LARCH_SAPLING.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.POTTED_JACARANDA_SAPLING.get(), RenderType.cutout());
-            event.enqueueWork(() -> {
-                Regions.register(new NaturalityColdOverworldRegion(new ResourceLocation(MODID, "overworld_cold"), 3));
-                Regions.register(new NaturalityNeutralOverworldRegion(new ResourceLocation(MODID, "overworld_neutral"), 5));
-                Regions.register(new NaturalityWarmOverworldRegion(new ResourceLocation(MODID, "overworld_warm"), 4));
-                Regions.register(new NaturalityHotOverworldRegion(new ResourceLocation(MODID, "overworld_hot"), 3));
 
-                BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LEAPING,
-                        NaturalityItems.FOUR_LEAF_CLOVER.get(), Potions.LUCK));
-                BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LUCK,
-                        Items.REDSTONE, NaturalityPotions.LONG_LUCK.get()));
-                BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LUCK,
-                        Items.GLOWSTONE_DUST, NaturalityPotions.STRONG_LUCK.get()));
-                BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LUCK,
-                        Items.FERMENTED_SPIDER_EYE, NaturalityPotions.UNLUCK.get()));
-                BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(NaturalityPotions.UNLUCK.get(),
-                        Items.REDSTONE, NaturalityPotions.LONG_UNLUCK.get()));
-                BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(NaturalityPotions.UNLUCK.get(),
-                        Items.GLOWSTONE_DUST, NaturalityPotions.STRONG_UNLUCK.get()));
-            });
-            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, NaturalitySurfaceRuleData.overworld());
+            BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LEAPING,
+                    NaturalityItems.FOUR_LEAF_CLOVER.get(), Potions.LUCK));
+            BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LUCK,
+                    Items.REDSTONE, NaturalityPotions.LONG_LUCK.get()));
+            BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LUCK,
+                    Items.GLOWSTONE_DUST, NaturalityPotions.STRONG_LUCK.get()));
+            BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LUCK,
+                    Items.FERMENTED_SPIDER_EYE, NaturalityPotions.UNLUCK.get()));
+            BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(NaturalityPotions.UNLUCK.get(),
+                    Items.REDSTONE, NaturalityPotions.LONG_UNLUCK.get()));
+            BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(NaturalityPotions.UNLUCK.get(),
+                    Items.GLOWSTONE_DUST, NaturalityPotions.STRONG_UNLUCK.get()));
         }
     }
 }

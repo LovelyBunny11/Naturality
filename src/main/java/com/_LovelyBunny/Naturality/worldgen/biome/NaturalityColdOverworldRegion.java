@@ -17,7 +17,6 @@ public class NaturalityColdOverworldRegion extends Region {
     public NaturalityColdOverworldRegion(ResourceLocation name, int weight) {
         super(name, RegionType.OVERWORLD, weight);
     }
-
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper)
             {

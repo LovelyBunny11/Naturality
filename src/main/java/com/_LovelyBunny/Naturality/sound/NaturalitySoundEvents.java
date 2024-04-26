@@ -12,9 +12,10 @@ public class NaturalitySoundEvents {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Naturality.MODID);
 
-    public static final RegistryObject<SoundEvent> MOTH_AMBIENT = registerSoundEvents("moth_ambient");
-    public static final RegistryObject<SoundEvent> MOTH_HURT = registerSoundEvents("moth_hurt");
-    public static final RegistryObject<SoundEvent> MOTH_DEATH = registerSoundEvents("moth_death");
+    public static final RegistryObject<SoundEvent> BIRD_FLY = registerSoundEvents("bird_fly");
+    public static final RegistryObject<SoundEvent> BIRD_AMBIENT = registerSoundEvents("bird_ambient");
+    public static final RegistryObject<SoundEvent> BIRD_HURT = registerSoundEvents("bird_hurt");
+    public static final RegistryObject<SoundEvent> BIRD_DEATH = registerSoundEvents("bird_death");
 
     private static RegistryObject<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Naturality.MODID, name)));

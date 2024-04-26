@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/button_pressed",
-  "textures": {
-    "texture": "notenoughtrees:block/maple_planks"
-  }
-}

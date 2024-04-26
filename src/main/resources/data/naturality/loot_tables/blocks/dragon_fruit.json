@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "minecraft:dragon_fruit",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "berries": "true"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "naturality:dragon_fruit"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "naturality:blocks/dragon_fruit"
+}

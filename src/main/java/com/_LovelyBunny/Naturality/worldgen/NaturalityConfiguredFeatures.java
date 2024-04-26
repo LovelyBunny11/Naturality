@@ -6,6 +6,8 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.structure.structures.BuriedTreasureStructure;
+
 public class NaturalityConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PEAT_MOSS_VEGETATION = FeatureUtils.createKey("peat_moss_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PEAT_MOSS_PATCH = FeatureUtils.createKey("peat_moss_patch_bonemeal");

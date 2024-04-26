@@ -114,6 +114,9 @@ public class NaturalityCreativeTabs {
                         pOutput.accept(NaturalityItems.VIOLET.get());
                         pOutput.accept(NaturalityItems.CLOVER.get());
                         pOutput.accept(NaturalityItems.FOUR_LEAF_CLOVER.get());
+                        pOutput.accept(NaturalityItems.AZURE_BLUET.get());
+                        pOutput.accept(NaturalityItems.FORGET_ME_NOT.get());
+                        pOutput.accept(NaturalityItems.BLUEBELL.get());
                         pOutput.accept(NaturalityItems.WISTERIA.get());
                         pOutput.accept(NaturalityItems.ALOE.get());
                         pOutput.accept(NaturalityItems.MILKWEED.get());
@@ -142,6 +145,7 @@ public class NaturalityCreativeTabs {
                         pOutput.accept(NaturalityItems.LARCH_CHEST_BOAT.get());
                         pOutput.accept(NaturalityItems.JACARANDA_CHEST_BOAT.get());
                         pOutput.accept(NaturalityItems.DRAGON_FRUIT.get());
+                        pOutput.accept(NaturalityItems.OYSTER_MUSHROOM.get());
                         pOutput.accept(NaturalityItems.BUTTERFLY_SPAWN_EGG.get());
                         pOutput.accept(NaturalityItems.MOTH_SPAWN_EGG.get());
                         pOutput.accept(NaturalityItems.BUTTERFLY_NET.get());

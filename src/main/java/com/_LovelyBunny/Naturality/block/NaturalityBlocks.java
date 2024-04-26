@@ -3,8 +3,10 @@ package com._LovelyBunny.Naturality.block;
 import com._LovelyBunny.Naturality.Naturality;
 import com._LovelyBunny.Naturality.block.entity.NaturalityWoodTypes;
 import com._LovelyBunny.Naturality.worldgen.tree.*;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.BlockGetter;
@@ -1136,10 +1138,19 @@ public class NaturalityBlocks {
             () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.PEONY).sound(SoundType.GRASS)));
     public static final RegistryObject<Block> VIOLET = registerBlock("violet",
             () -> new FlowerBlock(() -> MobEffects.DIG_SPEED, 5, BlockBehaviour.Properties.copy(Blocks.DANDELION).sound(SoundType.GRASS)));
-//    public static final RegistryObject<Block> PEAT_MOSS = registerBlock("peat_moss",
-//            () -> new PeatMossBlock(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK).sound(SoundType.MOSS)));
+    public static final RegistryObject<Block> BLUEBELL = registerBlock("bluebell",
+            () -> new FlowerBlock(() -> MobEffects.POISON, 5, BlockBehaviour.Properties.copy(Blocks.DANDELION).sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> AZURE_BLUET = registerBlock("azure_bluet",
+            () -> new PinkPetalsBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS).sound(SoundType.PINK_PETALS)));
+    public static final RegistryObject<Block> FORGET_ME_NOT = registerBlock("forget_me_not",
+            () -> new PinkPetalsBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS).sound(SoundType.PINK_PETALS)));
+    public static final RegistryObject<Block> OYSTER_MUSHROOMS = registerBlock("oyster_mushrooms",
+            () -> new OysterMushroomsBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> POTTED_VIOLET = BLOCKS.register("potted_violet",
             () -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), NaturalityBlocks.VIOLET,
+                    BlockBehaviour.Properties.copy(Blocks.POTTED_DANDELION).noOcclusion()));
+    public static final RegistryObject<Block> POTTED_BLUEBELL = BLOCKS.register("potted_bluebell",
+            () -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), NaturalityBlocks.BLUEBELL,
                     BlockBehaviour.Properties.copy(Blocks.POTTED_DANDELION).noOcclusion()));
     public static final RegistryObject<Block> POTTED_ALOE = BLOCKS.register("potted_aloe",
             () -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), NaturalityBlocks.ALOE,

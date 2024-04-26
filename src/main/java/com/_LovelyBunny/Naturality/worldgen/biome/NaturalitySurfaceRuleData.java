@@ -1,10 +1,14 @@
 package com._LovelyBunny.Naturality.worldgen.biome;
 
 import com._LovelyBunny.Naturality.block.NaturalityBlocks;
+import net.minecraft.data.worldgen.SurfaceRuleData;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 
 public class NaturalitySurfaceRuleData {
     //VANILLA
@@ -14,6 +18,11 @@ public class NaturalitySurfaceRuleData {
     private static final SurfaceRules.RuleSource COARSE_DIRT = makeStateRule(Blocks.COARSE_DIRT);
     private static final SurfaceRules.RuleSource SAND = makeStateRule(Blocks.SAND);
     private static final SurfaceRules.RuleSource SANDSTONE = makeStateRule(Blocks.SANDSTONE);
+    //NETHER
+    private static final SurfaceRules.RuleSource SOUL_SAND = makeStateRule(Blocks.SOUL_SAND);
+    private static final SurfaceRules.RuleSource SOUL_SOIL = makeStateRule(Blocks.SOUL_SOIL);
+    private static final SurfaceRules.RuleSource CRIMSON_NYLIUM = makeStateRule(Blocks.CRIMSON_NYLIUM);
+    private static final SurfaceRules.RuleSource LAVA = makeStateRule(Blocks.LAVA);
     //Naturality
     private static final SurfaceRules.RuleSource SANDY_SOIL = makeStateRule(NaturalityBlocks.SANDY_SOIL.get());
 

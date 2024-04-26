@@ -5,13 +5,18 @@ import com._LovelyBunny.Naturality.particle.NaturalityParticleTypes;
 import com._LovelyBunny.Naturality.tag.NaturalityTags;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -25,6 +30,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.control.LookControl;
+import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
@@ -40,21 +46,35 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoublePlantBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.border.WorldBorder;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.chunk.ChunkSource;
+import net.minecraft.world.level.chunk.ChunkStatus;
 import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.entity.EntityTypeTest;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.lighting.LevelLightEngine;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.storage.LevelData;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.ticks.LevelTickAccess;
 import net.minecraftforge.fluids.FluidType;
 
 import javax.annotation.Nullable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoField;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
@@ -74,10 +94,11 @@ public class Moth extends Animal implements FlyingAnimal {
         return this.savedFlowerPos != null;
     }
     private static final EntityDataAccessor<Integer> DATA_TYPE_ID;
+    private static final EntityDataAccessor<Byte> DATA_FLAGS_ID;
     public Moth(EntityType<? extends Moth> p_21368_, Level p_21369_) {
         super(p_21368_, p_21369_);
-        this.moveControl = new FlyingMoveControl(this, 20, true);
-        this.lookControl = new LookControl(this);
+        this.moveControl = new MothMoveControl(this, 20, true);
+        this.lookControl = new MothLookControl();
         this.setPathfindingMalus(BlockPathTypes.DANGER_OTHER, 0.0F);
         this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
@@ -98,20 +119,22 @@ public class Moth extends Animal implements FlyingAnimal {
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.15D));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.2D, Ingredient.of(ItemTags.FLOWERS), false));
         this.goalSelector.addGoal(4, new PanicGoal(this, 1.25));
-        this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.1D));
-        this.goalSelector.addGoal(6, new AvoidEntityGoal(this, Player.class, 6.0F, 1.0, 1.2));
-        this.goalSelector.addGoal(7, new AvoidEntityGoal(this, Spider.class, 6.0F, 1.0, 1.2));
-        this.goalSelector.addGoal(8, new AvoidEntityGoal(this, CaveSpider.class, 6.0F, 1.0, 1.2));
-        this.goalSelector.addGoal(9, new WaterAvoidingRandomStrollGoal(this, 1.1D));
-        this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(11, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(12, new MothPollinateGoal());
-        this.goalSelector.addGoal(13, new GoToKnownFlowerGoal());
+        this.goalSelector.addGoal(5, new MothSleepGoal());
+        this.goalSelector.addGoal(6, new FollowParentGoal(this, 1.1D));
+        this.goalSelector.addGoal(7, new AvoidEntityGoal(this, Player.class, 6.0F, 1.0, 1.2));
+        this.goalSelector.addGoal(8, new AvoidEntityGoal(this, Spider.class, 6.0F, 1.0, 1.2));
+        this.goalSelector.addGoal(9, new AvoidEntityGoal(this, CaveSpider.class, 6.0F, 1.0, 1.2));
+        this.goalSelector.addGoal(10, new WaterAvoidingRandomStrollGoal(this, 1.1D));
+        this.goalSelector.addGoal(11, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(13, new MothPollinateGoal());
+        this.goalSelector.addGoal(14, new GoToKnownFlowerGoal());
     }
 
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_TYPE_ID, 0);
+        this.entityData.define(DATA_FLAGS_ID, (byte)0);
     }
 
     public void addAdditionalSaveData(CompoundTag p_29697_) {
@@ -125,6 +148,7 @@ public class Moth extends Animal implements FlyingAnimal {
     }
     static {
         DATA_TYPE_ID = SynchedEntityData.defineId(Moth.class, EntityDataSerializers.INT);
+        DATA_FLAGS_ID = SynchedEntityData.defineId(Moth.class, EntityDataSerializers.BYTE);
     }
 
     public static enum Variant implements StringRepresentable {
@@ -133,8 +157,8 @@ public class Moth extends Animal implements FlyingAnimal {
         LUNA(1, "luna"),
         DEATH_HEAD_HAWK(2, "death_head_hawk");
 
-        private static final IntFunction<Moth.Variant> BY_ID = ByIdMap.sparse(Moth.Variant::id, values(), LUNA);
-        public static final Codec<Moth.Variant> CODEC = StringRepresentable.fromEnum(Moth.Variant::values);
+        private static final IntFunction<Variant> BY_ID = ByIdMap.sparse(Variant::id, values(), LUNA);
+        public static final Codec<Variant> CODEC = StringRepresentable.fromEnum(Variant::values);
         final int id;
         private final String name;
 
@@ -151,8 +175,8 @@ public class Moth extends Animal implements FlyingAnimal {
             return this.id;
         }
 
-        public static Moth.Variant byId(int p_262665_) {
-            return (Moth.Variant) BY_ID.apply(p_262665_);
+        public static Variant byId(int p_262665_) {
+            return (Variant) BY_ID.apply(p_262665_);
         }
     }
     public Item getDropItem() {
@@ -178,20 +202,20 @@ public class Moth extends Animal implements FlyingAnimal {
         return (blockstate.is(BlockTags.LEAVES) || blockstate.is(Blocks.GRASS_BLOCK) || blockstate.is(BlockTags.LOGS) || blockstate.is(Blocks.AIR)) && isDarkEnoughToSpawn(p_218257_, p_218259_, p_218260_);
     }
 
-    @javax.annotation.Nullable
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor p_29678_, DifficultyInstance p_29679_, MobSpawnType p_29680_, @javax.annotation.Nullable SpawnGroupData p_29681_, @javax.annotation.Nullable CompoundTag p_29682_) {
-        Moth.Variant Moth$variant = getRandomMothVariant(p_29678_, this.blockPosition());
-        if (p_29681_ instanceof Moth.MothGroupData) {
-            Moth$variant = ((Moth.MothGroupData) p_29681_).variant;
+    @Nullable
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor p_29678_, DifficultyInstance p_29679_, MobSpawnType p_29680_, @Nullable SpawnGroupData p_29681_, @Nullable CompoundTag p_29682_) {
+        Variant Moth$variant = getRandomMothVariant(p_29678_, this.blockPosition());
+        if (p_29681_ instanceof MothGroupData) {
+            Moth$variant = ((MothGroupData) p_29681_).variant;
         } else {
-            p_29681_ = new Moth.MothGroupData(Moth$variant);
+            p_29681_ = new MothGroupData(Moth$variant);
         }
 
         this.setVariant(Moth$variant);
         return super.finalizeSpawn(p_29678_, p_29679_, p_29680_, (SpawnGroupData) p_29681_, p_29682_);
     }
 
-    private static Moth.Variant getRandomMothVariant(LevelAccessor p_262699_, BlockPos p_262700_) {
+    private static Variant getRandomMothVariant(LevelAccessor p_262699_, BlockPos p_262700_) {
         Holder<Biome> holder = p_262699_.getBiome(p_262700_);
         int i = p_262699_.getRandom().nextInt(100);
         if (isHalloween()) {
@@ -227,19 +251,19 @@ public class Moth extends Animal implements FlyingAnimal {
         }
     }
 
-    public void setVariant(Moth.Variant p_262578_) {
+    public void setVariant(Variant p_262578_) {
         this.entityData.set(DATA_TYPE_ID, p_262578_.id);
     }
 
-    public Moth.Variant getVariant() {
+    public Variant getVariant() {
         return byId((Integer) this.entityData.get(DATA_TYPE_ID));
     }
 
-    @javax.annotation.Nullable
+    @Nullable
     public Moth getBreedOffspring(ServerLevel p_149035_, AgeableMob p_149036_) {
         Moth Moth = (Moth) NaturalityEntityTypes.MOTH.get().create(p_149035_);
         if (Moth != null) {
-            Moth.Variant moth$variant = getRandomMothVariant(p_149035_, this.blockPosition());
+            Variant moth$variant = getRandomMothVariant(p_149035_, this.blockPosition());
             if (this.random.nextInt(20) != 0) {
                 label22:
                 {
@@ -260,10 +284,10 @@ public class Moth extends Animal implements FlyingAnimal {
 
         return Moth;
     }
-    public static class MothGroupData extends AgeableMob.AgeableMobGroupData {
-        public final Moth.Variant variant;
+    public static class MothGroupData extends AgeableMobGroupData {
+        public final Variant variant;
 
-        public MothGroupData(Moth.Variant p_262662_) {
+        public MothGroupData(Variant p_262662_) {
             super(1.0F);
             this.variant = p_262662_;
         }
@@ -332,17 +356,17 @@ public class Moth extends Animal implements FlyingAnimal {
         }
         BlockPos blockPos = BlockPos.containing(Moth.this.getX(), Moth.this.getBoundingBox().maxY, Moth.this.getZ());
         if (isFlapping()) {
-            switch (Variant.byId(this.entityData.get(DATA_TYPE_ID))) {
+            switch (byId(this.entityData.get(DATA_TYPE_ID))) {
                 case LUNA:
                     this.level().addParticle(NaturalityParticleTypes.LUNA_MOTH_DUST.get(),
                             blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0.15d, 0.15d, 0.15d);
             }
-            switch (Variant.byId(this.entityData.get(DATA_TYPE_ID))) {
+            switch (byId(this.entityData.get(DATA_TYPE_ID))) {
                 case ROSY_MAPLE:
                     this.level().addParticle(NaturalityParticleTypes.ROSY_MAPLE_MOTH_DUST.get(),
                             blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0.15d, 0.15d, 0.15d);
             }
-            switch (Variant.byId(this.entityData.get(DATA_TYPE_ID))) {
+            switch (byId(this.entityData.get(DATA_TYPE_ID))) {
                 case DEATH_HEAD_HAWK:
                     this.level().addParticle(NaturalityParticleTypes.DEATH_HEAD_MOTH_DUST.get(),
                             blockPos.getX(), blockPos.getY(), blockPos.getZ(), 0.15d, 0.15d, 0.15d);
@@ -452,7 +476,99 @@ public class Moth extends Animal implements FlyingAnimal {
     boolean closerThan(BlockPos p_27817_, int p_27818_) {
         return p_27817_.closerThan(this.blockPosition(), (double)p_27818_);
     }
+    private void setFlag(int p_28533_, boolean p_28534_) {
+        if (p_28534_) {
+            this.entityData.set(DATA_FLAGS_ID, (byte)((Byte)this.entityData.get(DATA_FLAGS_ID) | p_28533_));
+        } else {
+            this.entityData.set(DATA_FLAGS_ID, (byte)((Byte)this.entityData.get(DATA_FLAGS_ID) & ~p_28533_));
+        }
 
+    }
+    private boolean getFlag(int p_28609_) {
+        return ((Byte)this.entityData.get(DATA_FLAGS_ID) & p_28609_) != 0;
+    }
+    public boolean isSleeping() {
+        return this.getFlag(32);
+    }
+    void setSleeping(boolean p_28627_) {
+        this.setFlag(32, p_28627_);
+    }
+    void clearStates() {
+        this.setSleeping(false);
+    }
+    protected boolean isOnLeaves() {
+        BlockPos blockpos = BlockPos.containing(Moth.this.getX(), Moth.this.getBoundingBox().maxY, Moth.this.getZ());
+        BlockState blockstate = this.level().getBlockState(blockpos.below());
+        return (blockstate.is(BlockTags.LEAVES) || blockstate.is(BlockTags.LOGS));
+    }
+    class MothSleepGoal extends Goal {
+        private static final int WAIT_TIME_BEFORE_SLEEP = reducedTickDelay(140);
+        private int countdown;
+
+        public MothSleepGoal() {
+            super();
+            this.countdown = Moth.this.random.nextInt(WAIT_TIME_BEFORE_SLEEP);
+            this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK, Flag.JUMP));
+        }
+
+        public boolean canUse() {
+            if (Moth.this.xxa == 0.0F && Moth.this.yya == 0.0F && Moth.this.zza == 0.0F) {
+                return this.canSleep() || Moth.this.isSleeping();
+            } else {
+                return false;
+            }
+        }
+
+        public boolean canContinueToUse() {
+            return this.canSleep();
+        }
+
+        private boolean canSleep() {
+            if (this.countdown > 0) {
+                --this.countdown;
+                return false;
+            } else {
+                return Moth.this.level().isDay() && isOnLeaves() && !Moth.this.isInPowderSnow;
+            }
+        }
+
+        public void stop() {
+            this.countdown = Moth.this.random.nextInt(WAIT_TIME_BEFORE_SLEEP);
+            Moth.this.clearStates();
+        }
+
+        public void start() {
+            Moth.this.setJumping(false);
+            Moth.this.setSleeping(true);
+            Moth.this.getNavigation().stop();
+            Moth.this.getMoveControl().setWantedPosition(Moth.this.getX(), Moth.this.getY(), Moth.this.getZ(), 0.0);
+        }
+    }
+    public class MothLookControl extends LookControl {
+        public MothLookControl() {
+            super(Moth.this);
+        }
+
+        public void tick() {
+            if (!Moth.this.isSleeping()) {
+                super.tick();
+            }
+
+        }
+    }
+
+    class MothMoveControl extends FlyingMoveControl {
+        public MothMoveControl(Mob p_24893_, int p_24894_, boolean p_24895_) {
+            super(p_24893_, p_24894_, p_24895_);
+        }
+        
+        public void tick() {
+            if (!Moth.this.isSleeping()) {
+                super.tick();
+            }
+
+        }
+    }
     class MothPollinateGoal extends Goal {
         private static final int MIN_POLLINATION_TICKS = 400;
         private static final int MIN_FIND_FLOWER_RETRY_COOLDOWN = 20;
@@ -694,7 +810,7 @@ public class Moth extends Animal implements FlyingAnimal {
     }
     class WanderGoal extends Goal {
         WanderGoal() {
-            this.setFlags(EnumSet.of(Goal.Flag.MOVE));
+            this.setFlags(EnumSet.of(Flag.MOVE));
         }
         public boolean canUse() {
             return Moth.this.navigation.isDone() && Moth.this.random.nextInt(3) == 0;

@@ -27,6 +27,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
+import net.minecraft.world.entity.ai.control.LookControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
@@ -83,7 +84,7 @@ public class Butterfly extends Animal implements FlyingAnimal {
     }
 
     public static final EntityDataAccessor<Integer> DATA_TYPE_ID;
-    private static final EntityDataAccessor<Byte> DATA_ID_FLAGS;
+    private static final EntityDataAccessor<Byte> DATA_FLAGS_ID;
     private static final int FLAG_RESTING = 1;
     private static final TargetingConditions BUTTERFLY_RESTING_TARGETING;
     @Nullable
@@ -91,7 +92,8 @@ public class Butterfly extends Animal implements FlyingAnimal {
 
     public Butterfly(EntityType<? extends Butterfly> p_21368_, Level p_21369_) {
         super(p_21368_, p_21369_);
-        this.moveControl = new FlyingMoveControl(this, 20, true);
+        this.moveControl = new ButterflyMoveControl(this, 20, true);
+        this.lookControl = new ButterflyLookControl();
         this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
         this.setPathfindingMalus(BlockPathTypes.WATER_BORDER, 16.0F);
@@ -114,48 +116,49 @@ public class Butterfly extends Animal implements FlyingAnimal {
         this.goalSelector.addGoal(4, new PanicGoal(this, 1.25));
         this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.1D));
         this.goalSelector.addGoal(6, new AvoidEntityGoal(this, Player.class, 6.0F, 1.0, 1.2));
-        this.goalSelector.addGoal(7, new AvoidEntityGoal(this, Spider.class, 6.0F, 1.0, 1.2));
-        this.goalSelector.addGoal(8, new AvoidEntityGoal(this, CaveSpider.class, 6.0F, 1.0, 1.2));
-        this.goalSelector.addGoal(9, new WaterAvoidingRandomStrollGoal(this, 1.1D));
-        this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(11, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(12, new ButterflyPollinateGoal());
-        this.goalSelector.addGoal(13, new GoToKnownFlowerGoal());
+        this.goalSelector.addGoal(7, new ButterflySleepGoal());
+        this.goalSelector.addGoal(8, new AvoidEntityGoal(this, Spider.class, 6.0F, 1.0, 1.2));
+        this.goalSelector.addGoal(9, new AvoidEntityGoal(this, CaveSpider.class, 6.0F, 1.0, 1.2));
+        this.goalSelector.addGoal(10, new WaterAvoidingRandomStrollGoal(this, 1.1D));
+        this.goalSelector.addGoal(11, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(13, new ButterflyPollinateGoal());
+        this.goalSelector.addGoal(14, new GoToKnownFlowerGoal());
     }
 
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_TYPE_ID, 0);
-        this.entityData.define(DATA_ID_FLAGS, (byte) 1);
+        this.entityData.define(DATA_FLAGS_ID, (byte) 0);
     }
 
     public void addAdditionalSaveData(CompoundTag p_29697_) {
         super.addAdditionalSaveData(p_29697_);
         p_29697_.putInt("Type", this.getVariant().id);
-        this.entityData.set(DATA_ID_FLAGS, p_29697_.getByte("Flags"));
+        this.entityData.set(DATA_FLAGS_ID, p_29697_.getByte("Flags"));
     }
 
     public void readAdditionalSaveData(CompoundTag p_29684_) {
         super.readAdditionalSaveData(p_29684_);
         this.setVariant(Butterfly.Variant.byId(p_29684_.getInt("Type")));
-        p_29684_.putByte("Flags", (Byte)this.entityData.get(DATA_ID_FLAGS));
+        p_29684_.putByte("Flags", (Byte)this.entityData.get(DATA_FLAGS_ID));
     }
 
     static {
         DATA_TYPE_ID = SynchedEntityData.defineId(Butterfly.class, EntityDataSerializers.INT);
-        DATA_ID_FLAGS = SynchedEntityData.defineId(Fox.class, EntityDataSerializers.BYTE);
+        DATA_FLAGS_ID = SynchedEntityData.defineId(Fox.class, EntityDataSerializers.BYTE);
         BUTTERFLY_RESTING_TARGETING = TargetingConditions.forNonCombat().range(4.0);
     }
     public boolean isResting() {
-        return ((Byte)this.entityData.get(DATA_ID_FLAGS) & 1) != 0;
+        return ((Byte)this.entityData.get(DATA_FLAGS_ID) & 1) != 0;
     }
 
     public void setResting(boolean p_27457_) {
-        byte $$1 = (Byte)this.entityData.get(DATA_ID_FLAGS);
+        byte $$1 = (Byte)this.entityData.get(DATA_FLAGS_ID);
         if (p_27457_) {
-            this.entityData.set(DATA_ID_FLAGS, (byte)($$1 | 1));
+            this.entityData.set(DATA_FLAGS_ID, (byte)($$1 | 1));
         } else {
-            this.entityData.set(DATA_ID_FLAGS, (byte)($$1 & -2));
+            this.entityData.set(DATA_FLAGS_ID, (byte)($$1 & -2));
         }
 
     }
@@ -445,6 +448,101 @@ public class Butterfly extends Animal implements FlyingAnimal {
 
     boolean closerThan(BlockPos p_27817_, int p_27818_) {
         return p_27817_.closerThan(this.blockPosition(), (double) p_27818_);
+    }
+    private void setFlag(int p_28533_, boolean p_28534_) {
+        if (p_28534_) {
+            this.entityData.set(DATA_FLAGS_ID, (byte)((Byte)this.entityData.get(DATA_FLAGS_ID) | p_28533_));
+        } else {
+            this.entityData.set(DATA_FLAGS_ID, (byte)((Byte)this.entityData.get(DATA_FLAGS_ID) & ~p_28533_));
+        }
+
+    }
+    private boolean getFlag(int p_28609_) {
+        return ((Byte)this.entityData.get(DATA_FLAGS_ID) & p_28609_) != 0;
+    }
+    public boolean isSleeping() {
+        return this.getFlag(32);
+    }
+    void setSleeping(boolean p_28627_) {
+        this.setFlag(32, p_28627_);
+    }
+    void clearStates() {
+        this.setSleeping(false);
+    }
+    protected boolean isOnLeaves() {
+        BlockPos blockpos = BlockPos.containing(Butterfly.this.getX(), Butterfly.this.getBoundingBox().maxY, Butterfly.this.getZ());
+        BlockState blockstate = this.level().getBlockState(blockpos.below());
+        return (blockstate.is(BlockTags.LEAVES) || blockstate.is(BlockTags.LOGS));
+    }
+    class ButterflySleepGoal extends Goal {
+        private static final int WAIT_TIME_BEFORE_SLEEP = reducedTickDelay(140);
+        private int countdown;
+
+        public ButterflySleepGoal() {
+            super();
+            this.countdown = Butterfly.this.random.nextInt(WAIT_TIME_BEFORE_SLEEP);
+            this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK, Flag.JUMP));
+        }
+
+        public boolean canUse() {
+            if (Butterfly.this.xxa == 0.0F && Butterfly.this.yya == 0.0F && Butterfly.this.zza == 0.0F) {
+                return this.canSleep() || Butterfly.this.isSleeping();
+            } else {
+                return false;
+            }
+        }
+
+        public boolean canContinueToUse() {
+            return this.canSleep();
+        }
+
+        private boolean canSleep() {
+            if (this.countdown > 0) {
+                --this.countdown;
+                return false;
+            } else {
+                return Butterfly.this.level().isNight() && isOnLeaves() && !Butterfly.this.isInPowderSnow;
+            }
+        }
+
+        public void stop() {
+            this.countdown = Butterfly.this.random.nextInt(WAIT_TIME_BEFORE_SLEEP);
+            Butterfly.this.clearStates();
+        }
+
+        public void start() {
+            Butterfly.this.setJumping(false);
+            Butterfly.this.setSleeping(true);
+            Butterfly.this.getNavigation().stop();
+            Butterfly.this.getMoveControl().setWantedPosition(Butterfly.this.getX(), Butterfly.this.getY(), Butterfly.this.getZ(), 0.0);
+        }
+    }
+    public class ButterflyLookControl extends LookControl {
+        public ButterflyLookControl() {
+            super(Butterfly.this);
+        }
+
+        public void tick() {
+            if (!Butterfly.this.isSleeping()) {
+                super.tick();
+            }
+
+        }
+    }
+
+    class ButterflyMoveControl extends FlyingMoveControl {
+
+
+        public ButterflyMoveControl(Mob p_24893_, int p_24894_, boolean p_24895_) {
+            super(p_24893_, p_24894_, p_24895_);
+        }
+
+        public void tick() {
+            if (!Butterfly.this.isSleeping()) {
+                super.tick();
+            }
+
+        }
     }
     class ButterflyPollinateGoal extends Goal {
         private static final int MIN_POLLINATION_TICKS = 400;

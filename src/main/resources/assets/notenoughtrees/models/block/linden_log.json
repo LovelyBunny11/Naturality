@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "notenoughtrees:block/linden_log_top",
-    "side": "notenoughtrees:block/linden_log"
-  }
-}

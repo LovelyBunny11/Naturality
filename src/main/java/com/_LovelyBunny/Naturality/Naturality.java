@@ -11,6 +11,7 @@ import com._LovelyBunny.Naturality.potion.NaturalityPotions;
 import com._LovelyBunny.Naturality.sound.NaturalitySoundEvents;
 import com._LovelyBunny.Naturality.util.NaturalityBrewingRecipe;
 import com._LovelyBunny.Naturality.worldgen.biome.*;
+import com._LovelyBunny.Naturality.worldgen.tree.NaturalityTreeDecorators;
 import com._LovelyBunny.Naturality.worldgen.tree.NaturalityTrunkPlacers;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -49,6 +50,7 @@ public class Naturality {
         NaturalityBlockEntities.register(modEventBus);
         NaturalityEntityTypes.register(modEventBus);
         NaturalityTrunkPlacers.register(modEventBus);
+        NaturalityTreeDecorators.register(modEventBus);
         NaturalityParticleTypes.register(modEventBus);
         NaturalitySoundEvents.register(modEventBus);
         NaturalityPotions.register(modEventBus);
@@ -62,6 +64,7 @@ public class Naturality {
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, NaturalitySurfaceRuleData.overworld());
 
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NaturalityBlocks.VIOLET.getId(), NaturalityBlocks.POTTED_VIOLET);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NaturalityBlocks.BLUEBELL.getId(), NaturalityBlocks.POTTED_BLUEBELL);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NaturalityBlocks.ALOE.getId(), NaturalityBlocks.POTTED_ALOE);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NaturalityBlocks.MAPLE_SAPLING.getId(), NaturalityBlocks.POTTED_MAPLE_SAPLING);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NaturalityBlocks.LINDEN_SAPLING.getId(), NaturalityBlocks.POTTED_LINDEN_SAPLING);
@@ -69,7 +72,7 @@ public class Naturality {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NaturalityBlocks.BEECH_SAPLING.getId(), NaturalityBlocks.POTTED_BEECH_SAPLING);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NaturalityBlocks.LARCH_SAPLING.getId(), NaturalityBlocks.POTTED_LARCH_SAPLING);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(NaturalityBlocks.JACARANDA_SAPLING.getId(), NaturalityBlocks.POTTED_JACARANDA_SAPLING);
-        });
+            });
     }
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
@@ -113,6 +116,7 @@ public class Naturality {
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.JACARANDA_SAPLING.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.CLOVER.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.RARE_CLOVER.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.FORGET_ME_NOT.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.ALOE.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.DRAGON_FRUIT.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.DRAGON_FRUIT_PLANT.get(), RenderType.cutoutMipped());
@@ -130,6 +134,10 @@ public class Naturality {
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.POTTED_BEECH_SAPLING.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.POTTED_LARCH_SAPLING.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.POTTED_JACARANDA_SAPLING.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.AZURE_BLUET.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.BLUEBELL.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.POTTED_BLUEBELL.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(NaturalityBlocks.OYSTER_MUSHROOMS.get(), RenderType.cutout());
 
             BrewingRecipeRegistry.addRecipe(new NaturalityBrewingRecipe(Potions.LEAPING,
                     NaturalityItems.FOUR_LEAF_CLOVER.get(), Potions.LUCK));

@@ -271,6 +271,14 @@ public class NaturalityItems {
             () -> new BlockItem(NaturalityBlocks.MILKWEED.get(),new Item.Properties()));
     public static final RegistryObject<Item> VIOLET = ITEMS.register("violet",
             () -> new BlockItem(NaturalityBlocks.VIOLET.get(),new Item.Properties()));
+    public static final RegistryObject<Item> AZURE_BLUET = ITEMS.register("azure_bluet",
+            () -> new BlockItem(NaturalityBlocks.AZURE_BLUET.get(),new Item.Properties()));
+    public static final RegistryObject<Item> FORGET_ME_NOT = ITEMS.register("forget_me_not",
+            () -> new BlockItem(NaturalityBlocks.FORGET_ME_NOT.get(), new Item.Properties()));
+    public static final RegistryObject<Item> OYSTER_MUSHROOM = ITEMS.register("oyster_mushroom",
+            () -> new BlockItem(NaturalityBlocks.OYSTER_MUSHROOMS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BLUEBELL = ITEMS.register("bluebell",
+            () -> new BlockItem(NaturalityBlocks.BLUEBELL.get(),new Item.Properties()));
     public static final RegistryObject<Item> BUTTERFLY_SPAWN_EGG = ITEMS.register("butterfly_spawn_egg",
             () -> new ForgeSpawnEggItem(NaturalityEntityTypes.BUTTERFLY, 0xf08a16,0x241300, new Item.Properties()));
     public static final RegistryObject<Item> MOTH_SPAWN_EGG = ITEMS.register("moth_spawn_egg",

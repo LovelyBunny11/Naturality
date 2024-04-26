@@ -1,0 +1,23 @@
+{
+	"ambientocclusion": false,
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "naturality:block/oyster_mushrooms",
+		"particle": "naturality:block/oyster_mushrooms"
+	},
+	"elements": [
+		{
+			"from": [-1, 13, 14],
+			"to": [7, 15, 19],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [8, 6, 12, 7], "texture": "#0"},
+				"east": {"uv": [7.5, 10, 10, 11], "texture": "#0"},
+				"south": {"uv": [8, 5, 12, 6], "texture": "#0"},
+				"west": {"uv": [5, 10, 7.5, 11], "texture": "#0"},
+				"up": {"uv": [4, 10, 0, 7.5], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [8, 7.5, 4, 10], "rotation": 180, "texture": "#0"}
+			}
+		}
+	]
+}

@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_top_right",
-  "textures": {
-    "bottom": "notenoughtrees:block/linden_door_bottom",
-    "top": "notenoughtrees:block/linden_door_top"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "notenoughtrees:block/dracaena_planks",
-    "side": "notenoughtrees:block/dracaena_planks",
-    "top": "notenoughtrees:block/dracaena_planks"
-  }
-}

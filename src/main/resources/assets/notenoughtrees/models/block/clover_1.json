@@ -1,7 +1,0 @@
-{
-  "parent": "notenoughtrees:block/flowerbed_1",
-  "textures": {
-    "flowerbed": "notenoughtrees:block/clover",
-    "stem": "notenoughtrees:block/clover_stem"
-  }
-}

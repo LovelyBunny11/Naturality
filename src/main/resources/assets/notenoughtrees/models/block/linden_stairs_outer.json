@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "notenoughtrees:block/linden_planks",
-    "side": "notenoughtrees:block/linden_planks",
-    "top": "notenoughtrees:block/linden_planks"
-  }
-}

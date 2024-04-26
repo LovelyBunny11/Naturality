@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "notenoughtrees:block/dracaena_planks",
-    "side": "notenoughtrees:block/dracaena_planks",
-    "top": "notenoughtrees:block/dracaena_planks"
-  }
-}
